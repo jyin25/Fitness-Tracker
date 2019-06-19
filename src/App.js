@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Beginner from './Beginner/Beginner';
+import Interm from './Intermediate/Intermediate';
+import Advanced from './Advanced/Advanced';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends React.Component {
+  
+  render () {
+    const weeks = this.props.store.weeks;
+    console.log(weeks);
+    const days = this.props.store.days;
+    return (
+      <div>
+        <Beginner weeks={weeks} days={days}/>
+        <Interm weeks={weeks} days={days}/>
+        <Advanced weeks={weeks} days={days}/>
+      </div>
+
+    )
+  }
 }
 
 export default App;
