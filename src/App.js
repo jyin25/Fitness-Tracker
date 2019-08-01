@@ -7,7 +7,7 @@ import FitContext from './Components/FitContext/FitContext';
 import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
 import Progress from './Components/Progress/Progress'
-
+import Main from './Components/Main/Main'
 
 class App extends React.Component {
   constructor(props) {
@@ -63,10 +63,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <Link to='/Beginner'><button>Preset List</button></Link>
-        <Link to='/Self'><button>Make your own</button></Link>
-        <Link to='/Progress'><button>Progress</button></Link>
         <FitContext.Provider value={contextValue}>
+          <Route
+            exact path='/'
+            component={Main}></Route>
           <Route
             exact path='/Beginner'
             component={Beginner}></Route>
