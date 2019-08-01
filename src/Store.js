@@ -274,59 +274,6 @@ const STORE = {
   legs: [],
   back: [],
 
-  setList: {
-    weeks: [
-      {1: {
-        Monday: {
-          sdf: 'sdf',
-          sdff: 'sdf'
-        },
-        Tuesday: {
-    
-        },
-        Wednesday: {
-    
-        },
-        Thursday: {
-    
-        },
-        Friday: {
-    
-        },
-        Saturday: {
-    
-        },
-        Sunday: {
-
-       }
-      }}, 
-      {2: {
-        Monday: {
-
-        },
-        Tuesday: {
-    
-        },
-        Wednesday: {
-    
-        },
-        Thursday: {
-    
-        },
-        Friday: {
-    
-        },
-        Saturday: {
-    
-        },
-        Sunday: {
-    
-        }
-      }},
-    ],
-
-  }
-
 }
 
 

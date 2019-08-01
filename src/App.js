@@ -6,6 +6,7 @@ import {Route, Link} from 'react-router-dom';
 import FitContext from './Components/FitContext/FitContext';
 import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
+import Progress from './Components/Progress/Progress'
 
 
 class App extends React.Component {
@@ -63,16 +64,17 @@ class App extends React.Component {
     return (
       <div>
         <Link to='/Beginner'><button>Preset List</button></Link>
-        <Link to='/Intermediate'><button>Make your own</button></Link>
-        <Link to='/Advanced'><button>Advanced</button></Link>
+        <Link to='/Self'><button>Make your own</button></Link>
+        <Link to='/Progress'><button>Progress</button></Link>
         <FitContext.Provider value={contextValue}>
           <Route
             exact path='/Beginner'
             component={Beginner}></Route>
           <Route
-            path='/Intermediate'></Route>
+            path='/Self'></Route>
           <Route
-            path='/Arnold'></Route>
+            path='/Progress'
+            component={Progress}></Route>
           <Route
             exact path={`/Beginner/week${this.state.selectedWeek.value}`}
             component={Days}>
