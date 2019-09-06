@@ -273,6 +273,7 @@ const STORE = {
   shoulder: [],
   legs: [],
   back: [],
+  muscle_groups: ['back', 'quads', 'bicep', 'tricep', 'chest', 'shoulder', ' calfs', 'abs', 'lats', 'deltoids']
 
 }
 

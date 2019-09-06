@@ -3,11 +3,13 @@ import './App.css';
 import STORE from './Store';
 import Beginner from './Components/Beginner/Beginner'
 import {Route, Link} from 'react-router-dom';
-import FitContext from './Components/FitContext/FitContext';
+import FitContext from './Components/FitContext/FitContext'
 import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
 import Progress from './Components/Progress/Progress'
 import Main from './Components/Main/Main'
+import Self from './Components/Self/Self'
+import Muscle from './Components/Self/Muscle/Muscle'
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class App extends React.Component {
         value: '',
         week: ''},
       selectedDay: '',
+      muscleGroup: '',
     }
   }
 
@@ -49,6 +52,10 @@ class App extends React.Component {
     .then(data => console.log(data))
   }
 
+  selectMuscleGroup = (data) => {
+    this.setState({muscleGroup: data})
+  }
+
 
   render () {
     const contextValue = {
@@ -58,9 +65,10 @@ class App extends React.Component {
       selectedWeek: this.state.selectedWeek,
       selectDay: this.selectDay,
       preSetExercises: this.state.STORE,
-      selectedDay: this.state.selectedDay
+      selectedDay: this.state.selectedDay,
+      selectMuscleGroup: this.selectMuscleGroup,
     }
-
+    console.log(this.state.muscleGroup)
     return (
       <div>
         <FitContext.Provider value={contextValue}>
@@ -68,10 +76,11 @@ class App extends React.Component {
             exact path='/'
             component={Main}></Route>
           <Route
-            exact path='/Beginner'
+            exact path='/PreSet'
             component={Beginner}></Route>
           <Route
-            path='/Self'></Route>
+            path='/Self'
+            component={Self}></Route>
           <Route
             path='/Progress'
             component={Progress}></Route>
@@ -83,7 +92,11 @@ class App extends React.Component {
             exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}`}
             component={Exercise}>
           </Route>
-
+          <Route 
+            exact path={`/muscleGroup/${this.state.muscleGroup}`}
+            component={Muscle}
+          >
+          </Route>
         </FitContext.Provider>
       </div>
 

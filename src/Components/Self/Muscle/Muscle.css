@@ -1,0 +1,19 @@
+.muscle-day-selection-container {
+  display: flex;
+}
+
+.muscle-day-selection {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.muscle-display {
+  display: flex;
+
+}
+
+.muscle-list {
+  list-style: none;
+}
+
+
