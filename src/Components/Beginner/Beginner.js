@@ -4,6 +4,7 @@ import {Link, Route} from 'react-router-dom';
 import Weeks from '../Weeks/Weeks'
 import Days from '../Days/Days'
 import Nav from '../Nav/Nav'
+import './preSet.css'
 
 class Beginner extends React.Component {
   static contextType = FitContext;
@@ -14,8 +15,8 @@ class Beginner extends React.Component {
     return (
       <>
         <Nav></Nav>
-        <header>
-          <h1>Preset List</h1>
+        <header className='week-title-container'>
+          <h1 className='title'>Weeks</h1>
         </header>
         <Weeks></Weeks>
       </>

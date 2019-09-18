@@ -5,14 +5,18 @@ const STORE = {
         [
           {Monday: 
             [
-              {Chest: {
-                description1: 'Monday',
-                description2: 'Monday',
-              }},
-              {Triceps: {
-                description1: 'Monday',
-                description2: 'Monday',
-              }},
+              {Chest: 
+                [
+                  {'Bench Press': [{video: 'https://videos.bodybuilding.com/video/mp4/76000/77012m.mp4'}, {howTo: 'Position the frame at the starting point, and load with the appropriate weight. Standing in the center of the frame, begin by gripping the handles and driving through your heels to lift the frame. Ensure your chest and head are up and your back is straight.'}]},
+                  {exercise1: 'Chest Press'},
+                ]
+              },
+              {Triceps: 
+                [
+                  {exercise1: [{name: 'Bench Press'}, {video: 'https://videos.bodybuilding.com/video/mp4/76000/77012m.mp4'}, {howTo: 'Position the frame at the starting point, and load with the appropriate weight. Standing in the center of the frame, begin by gripping the handles and driving through your heels to lift the frame. Ensure your chest and head are up and your back is straight.'}]},
+                  {exercise1: 'Chest Press'},
+                ]
+              },
             ]
           },
           {Tuesday: 
@@ -266,7 +270,8 @@ const STORE = {
         ]
       },
     ],
-  weeks: [1,2,3,4,5,6,7,8,9,10,11,12],
+  weeksRight: [2,4,6,8,10,12],
+  weeksLeft: [1,3,5,7,9,11],
   days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
   chest: [],
   arms: [],

@@ -1,6 +1,8 @@
 import React from 'react';
 import FitContext from '../FitContext/FitContext';
 import {Link} from 'react-router-dom';
+import Nav from '../Nav/Nav'
+import './Days.css'
 
 class Days extends React.Component {
   static contextType = FitContext;
@@ -9,7 +11,7 @@ class Days extends React.Component {
     const render = days.map(data => {
       return (
         <Link to={`/week${this.context.selectedWeek.value}/${data}`}>
-          <h3 onClick={() => this.context.selectDay(data)}>{data}</h3>
+          <h3 className='day-container' onClick={() => this.context.selectDay(data)}>{data}</h3>
         </Link>
       )
     })
@@ -22,8 +24,14 @@ class Days extends React.Component {
     console.log(this.context.selectedWeek)
     return (
       <>
-        {selectedWeek.value && <h2>Week {selectedWeek.value}</h2>}
-        {this.renderDays(days)}
+        <Nav></Nav>
+        {selectedWeek.value && 
+        <header className='day-title-container'>
+          <h1 className='title'>Days</h1>
+        </header>}
+        <section className='days-container'>
+          {this.renderDays(days)}
+        </section>
       </>
     )
   }

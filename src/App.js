@@ -16,7 +16,8 @@ class App extends React.Component {
     super(props)
     this.state= {
       STORE,
-      weeks: this.props.store.weeks,
+      weeksLeft: this.props.store.weeksLeft,
+      weeksRight: this.props.store.weeksRight,
       days: this.props.store.days,
       selectedWeek: {
         value: '',
@@ -59,7 +60,8 @@ class App extends React.Component {
 
   render () {
     const contextValue = {
-      weeks: this.state.weeks,
+      weeksLeft: this.state.weeksLeft,
+      weeksRight: this.state.weeksRight,
       days: this.state.days,
       selectWeek: this.selectWeek,
       selectedWeek: this.state.selectedWeek,

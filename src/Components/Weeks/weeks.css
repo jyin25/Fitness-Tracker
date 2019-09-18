@@ -1,0 +1,34 @@
+@media only screen and (max-width: 500px) and (min-width: 320px) {
+  .weeks-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .list-container {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  
+  .week-container {
+    display: flex;
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 0;
+    width: 7rem;
+    height: 4rem;
+    border-radius: 60px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .column-container {
+    padding: 0;
+  }
+}
+
+
+
+

@@ -1,26 +1,35 @@
 import React from 'react';
 import './ExcerciseList.css';
+import Nav from '../../Nav/Nav'
+
 
 class ExerciseList extends React.Component {
   
   renderExerciseList = (exerciseObj) => {
     const key = Object.keys(exerciseObj).join('');
-    const obj = exerciseObj[key];
-    console.log(obj)
+    const exerciseArr = exerciseObj[key];
+    console.log(exerciseArr)
+    const exerciseName = exerciseArr.map(data => Object.keys(data).join(''))
+    console.log(exerciseName)
+    
 
     return (
       <>
         <div>
           <h1>{key}</h1>
-          <p>input</p>
           <ul>
             <div className='exercise-list'>
-              <li>{obj.description1}</li>
-              <input></input>
-            </div>
-            <div className='exercise-list'>
-              <li>{obj.description2}</li>
-              <input></input>
+              <ul>
+                {exerciseName.map(name => {
+                  return (
+                    <>
+                      <li>{name}</li>
+                      <input></input>
+                    </>
+                  )
+                  })}
+              </ul>
+              
             </div>
           </ul>
         </div> 
@@ -31,7 +40,6 @@ class ExerciseList extends React.Component {
 
   render() {
     const {exerciseObj} = this.props
-    console.log(exerciseObj)
     return (
       <>
         {this.renderExerciseList(exerciseObj)}
