@@ -27,14 +27,24 @@ const STORE = {
           },
           {Tuesday: 
             [
-              {Legs: {
-                description1: 'Tuesday',
-                description2: 'Tuesday',
-              }},
-              {Shoulders: {
-                description1: 'sdf',
-                description2: 'sdf',
-              }},
+              {Legs: 
+                [
+                  {'Bench Press': {
+                    video: 'https://videos.bodybuilding.com/video/mp4/76000/77012m.mp4',
+                    howTo: 'Position the frame at the starting point, and load with the appropriate weight. Standing in the center of the frame, begin by gripping the handles and driving through your heels to lift the frame. Ensure your chest and head are up and your back is straight.'
+                  }},
+                  {exercise1: 'Chest Press'},
+                ]
+              },
+              {Shoulders:               
+                [
+                  {'Bench Press': {
+                    video: 'https://videos.bodybuilding.com/video/mp4/76000/77012m.mp4',
+                    howTo: 'Position the frame at the starting point, and load with the appropriate weight. Standing in the center of the frame, begin by gripping the handles and driving through your heels to lift the frame. Ensure your chest and head are up and your back is straight.'
+                  }},
+                  {exercise1: 'Chest Press'},
+                ]
+              },
             ]
           },
           {Wednesday: 

@@ -27,6 +27,18 @@ class App extends React.Component {
       selectedDay: '',
       muscleGroup: '',
       selectedExercise: '',
+      pr: {
+        Bench_Press: {
+          week1: '',
+          week2: '',
+          week3: ''
+        },
+        leg_press: {
+          week1: '',
+          week2: '',
+          week3: ''
+        },
+      }
     }
   }
 
@@ -78,6 +90,22 @@ class App extends React.Component {
     }})
   }
 
+  storePrPerWeek = (pr, selectedWeek, exerciseName, selectedDay) => {
+    console.log(pr, selectedWeek, exerciseName, selectedDay)
+    let newWeek = selectedWeek.week
+    let newName = exerciseName.replace(/ /g,"_")
+    console.log(newName)
+    this.setState((prevState, props) => ({
+      pr: {
+        ...prevState.pr,
+        [newName]: {
+          ...prevState.pr[newName],
+          [newWeek]: pr
+        }
+      }
+    }))
+  }
+
 
   render () {
     const contextValue = {
@@ -91,9 +119,10 @@ class App extends React.Component {
       selectedDay: this.state.selectedDay,
       selectMuscleGroup: this.selectMuscleGroup,
       selectExcercise: this.selectExcercise,
-      selectedExercise: this.state.selectedExercise
+      selectedExercise: this.state.selectedExercise,
+      storePrPerWeek: this.storePrPerWeek
     }
-    console.log(this.state.selectedExercise)
+    console.log(this.state.pr.Bench_Press)
     return (
       <div>
         <FitContext.Provider value={contextValue}>

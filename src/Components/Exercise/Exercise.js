@@ -9,11 +9,9 @@ class Exercies extends React.Component {
   renderExercise = (preSetExercises, selectedWeek, selectedDay) => {
     const findWeekIndx = Object.keys(preSetExercises.data).find(data => Object.keys(preSetExercises.data[data]).join('') === selectedWeek.week);
     const setWeek = selectedWeek.week;
-    console.log(setWeek)
     const findDayIndx = Object.keys(preSetExercises.data[findWeekIndx][setWeek]).find(data => 
       Object.keys(preSetExercises.data[findWeekIndx][setWeek][data]).join('') === selectedDay)
     const filterdDay = preSetExercises.data[findWeekIndx][setWeek][findDayIndx][selectedDay]
-    console.log(filterdDay)
     return filterdDay.map(data => {
       return (
         <>
@@ -27,8 +25,6 @@ class Exercies extends React.Component {
 
   render() {
     const {preSetExercises, selectedWeek, selectedDay} = this.context;
-    console.log(Object.keys(preSetExercises.data))
-    console.log(selectedDay)
     return (
       <>
         <Nav></Nav>
