@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-google-charts'
-
+import Nav from '../Nav/Nav'
 class Arnold extends React.Component {
   
   //can use `${}` to set variables
@@ -8,11 +8,7 @@ class Arnold extends React.Component {
     const newValue = 'week3'
     return (
       <>
-        <ul>
-          <li>Bar</li>
-          <li>Line</li>
-          <li>dot</li>
-        </ul>
+        <Nav></Nav>
         <div style={{ display: 'flex', maxWidth: 1500 }}>
           <Chart
             width={1000}

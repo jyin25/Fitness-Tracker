@@ -5,7 +5,7 @@ import Weeks from '../Weeks/Weeks'
 import Days from '../Days/Days'
 import Nav from '../Nav/Nav'
 
-class Beginner extends React.Component {
+class Preset extends React.Component {
   static contextType = FitContext;
 
   render() {
@@ -23,4 +23,4 @@ class Beginner extends React.Component {
   }
 }
 
-export default Beginner;
+export default Preset;

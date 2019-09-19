@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
 import STORE from './Store';
-import Beginner from './Components/Beginner/Beginner'
+import Preset from './Components/Preset/Preset';
 import {Route, Link} from 'react-router-dom';
 import FitContext from './Components/FitContext/FitContext';
 import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
 import Progress from './Components/Progress/Progress'
-import Main from './Components/Main/Main'
+import Main from './Components/Main/Main';
+import Self from './Components/Self/Self';
+import SelfMain from './Components/Self/SelfMain/SelfMain'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,8 +20,13 @@ class App extends React.Component {
       days: this.props.store.days,
       selectedWeek: {
         value: '',
-        week: ''},
+        week: ''
+      },
       selectedDay: '',
+      muscleGroup: {
+        id: '',
+        name: ''
+      }
     }
   }
 
@@ -36,6 +43,15 @@ class App extends React.Component {
 
   selectDay = (data) => {
     this.setState({selectedDay: data})
+  }
+
+  setGroup = (id, name) => {
+    this.setState({
+      muscleGroup: {
+        id,
+        name
+      }
+    })
   }
 
   componentWillMount() {
@@ -58,7 +74,9 @@ class App extends React.Component {
       selectedWeek: this.state.selectedWeek,
       selectDay: this.selectDay,
       preSetExercises: this.state.STORE,
-      selectedDay: this.state.selectedDay
+      selectedDay: this.state.selectedDay,
+      setGroup: this.setGroup,
+      muscleGroupId: this.state.muscleGroup.id
     }
 
     return (
@@ -68,22 +86,25 @@ class App extends React.Component {
             exact path='/'
             component={Main}></Route>
           <Route
-            exact path='/Beginner'
-            component={Beginner}></Route>
+            exact path='/Preset'
+            component={Preset}></Route>
           <Route
-            path='/Self'></Route>
+            path='/Self'
+            component={Self}></Route>
           <Route
             path='/Progress'
             component={Progress}></Route>
           <Route
-            exact path={`/Beginner/week${this.state.selectedWeek.value}`}
+            exact path={`/Preset/week${this.state.selectedWeek.value}`}
             component={Days}>
           </Route>
           <Route
             exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}`}
             component={Exercise}>
           </Route>
-
+          <Route
+            path={`/${this.state.muscleGroup.name}`}
+            component={SelfMain}></Route>
         </FitContext.Provider>
       </div>
 

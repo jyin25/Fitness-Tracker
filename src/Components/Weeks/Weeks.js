@@ -24,7 +24,7 @@ class Weeks extends React.Component {
     const render = weeks.map(data => {
       return (
         <>
-          <Link to={`/Beginner/week${data}`}>
+          <Link to={`/Preset/week${data}`}>
             <h2 
               onClick={()=> this.context.selectWeek(data)}>week {data}</h2>
           </Link>
