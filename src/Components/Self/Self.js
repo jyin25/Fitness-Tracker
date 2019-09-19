@@ -1,61 +1,63 @@
-import React from 'react';
-import {Link, Route} from 'react-router-dom';
-import FitContext from '../FitContext/FitContext';
+import React from 'react'
+import Nav from '../Nav/Nav'
+import store from '../../Store'
+import {Link} from 'react-router-dom'
+import './Self.css'
+import FitContext from '../FitContext/FitContext'
 
 
 class Self extends React.Component {
   static contextType = FitContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      exercises: [],
-      selectedMuscleId: ''
-    }
-  }
-
-  componentDidMount = () => {
-    fetch('http://wger.de/api/v2/muscle/')
-      .then(res => {
-        if(!res.ok) {
-          alert('database down')
-        }
-        return res;
-      })
-      .then(res => res.json())
-      .then(data => this.setState({exercises: data.results}))
-  }
-
-  selectMuscleGroup = (id, name) => {
-    this.setState({
-      selectedMuscleId:id
-    });
-    this.context.setGroup(id, name);
-    console.log(this.context)
-  }
-
-  renderResults = () => {
-    const render = this.state.exercises.map(data => {
+  displayFirstGroup = (selectMuscleGroup) => {
+    const muscleGroupArr = store.muscle_groups;
+    const firstGroup = muscleGroupArr.slice(0, 5);
+    return firstGroup.map(data => {
       return (
         <>
-          <Link to={`${data.name}`}>
-            <h2 key={data.id} onClick={() => this.selectMuscleGroup(data.id, data.name)}>
-              {data.name}
-            </h2>
-          </Link>
+          <div>
+            <li className='muscle-text'>{data}</li>
+            <Link to={`/muscleGroup/${data}`}><li className='muscle-container' onClick={() => selectMuscleGroup(data)}></li></Link>
+          </div>
         </>
       )
-    });
-    return render;
+    })
   }
 
+  displaySecondGroup = (selectMuscleGroup) => {
+    const muscleGroupArr = store.muscle_groups;
+    const secondGroup = muscleGroupArr.slice(5, muscleGroupArr.length);
+    return secondGroup.map(data => {
+      return (
+        <>
+          <div>
+            <li className='muscle-text'>{data}</li>
+            <Link><li className='muscle-container' onClick={() => selectMuscleGroup(data)}></li></Link>
+          </div>
+        </>
+      )
+    })
+  }
+
+
+
   render() {
+    const {selectMuscleGroup} = this.context;
 
     return (
-        <div>
-            <h1>Muscle Group</h1>
-            {this.renderResults()}
-        </div>
+      <>
+        <Nav></Nav>
+        <section className='muscle-group'>
+          <ul className="first-muscle-group">
+            {this.displayFirstGroup(selectMuscleGroup)}
+          </ul>
+          <ul className="second-muscle-group">
+            {this.displaySecondGroup(selectMuscleGroup)}
+          </ul>
+        </section>
+
+
+      </>
     )
   }
 }

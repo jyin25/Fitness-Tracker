@@ -2,6 +2,7 @@ import React from 'react';
 import FitContext from '../FitContext/FitContext';
 import {Link, Route} from 'react-router-dom';
 import Days from '../Days/Days'
+import './weeks.css'
 
 class Weeks extends React.Component {
   static contextType = FitContext;
@@ -20,12 +21,12 @@ class Weeks extends React.Component {
   }
 
   renderWeeks = (weeks, selectedWeek) => {
-    console.log(selectedWeek.isHidden)
+    console.log(weeks)
     const render = weeks.map(data => {
       return (
         <>
           <Link to={`/Preset/week${data}`}>
-            <h2 
+            <h2 className='week-container'
               onClick={()=> this.context.selectWeek(data)}>week {data}</h2>
           </Link>
         </>
@@ -37,18 +38,24 @@ class Weeks extends React.Component {
 
   render() {
     const style = (this.state.hidden? {display: 'none'}: {})
-    const {weeks, selectedWeek} = this.context
-    console.log(selectedWeek.value)
+    const {weeksRight, weeksLeft, selectedWeek} = this.context
     return (
-      <>
-        <div>
-          <ul>
-            <li>
-              {this.renderWeeks(weeks, selectedWeek)}
+      <section className='weeks-container'>
+        <div className='left-column'>
+          <ul className='column-container'>
+            <li className='list-container'>
+              {this.renderWeeks(weeksLeft, selectedWeek)}
             </li>
           </ul>
         </div>
-      </>
+        <div className='right-column'>
+          <ul className='column-container'>
+            <li className='list-container'>
+              {this.renderWeeks(weeksRight, selectedWeek)}
+            </li>
+          </ul>
+        </div>
+      </section>
     )
   }
 }

@@ -1,3 +1,39 @@
 .exercise-list {
   display: flex;
 }
+
+.pr-input {
+  display: flex;
+}
+
+.input-box {
+  width: 2rem;
+  height: 1rem;
+  margin-right: .5rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  border: 1px black solid;
+}
+
+.exercise-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.exercise-title {
+  text-align: center;
+}
+
+.exercise-list > ul {
+  list-style-type: none;
+  margin-left: 2rem;
+  padding: 0;
+}
+
+.submit-box {
+  width: 3rem;
+  height: 1.2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}

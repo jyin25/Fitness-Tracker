@@ -1,46 +1,46 @@
-.main-page-container {
+
+@media only screen and (max-width: 500px) and (min-width: 320px) {
+  .main-page-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     height: 1000px;
-    align-items: center;
+  }
 }
 
 .main-page-split {
-    width: 100%;
-    text-align: center;
-    
+  width: 100%;
+  text-align: center;  
 }
 
-.beginner-pic {
-    background-image: url('https://www.t-nation.com/system/publishing/articles/10005761/original/The-20-Minutes-of-Anything-Workout.jpg?1514667563');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.preset-pic {
+  background-image: url('https://www.t-nation.com/system/publishing/articles/10005761/original/The-20-Minutes-of-Anything-Workout.jpg?1514667563');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .make-pic {
-    background-image: url('https://www.t-nation.com/system/publishing/articles/10004393/original/Biggest-Lie-in-Fitness.jpg?1486074629');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
+  background-image: url('https://www.t-nation.com/system/publishing/articles/10004393/original/Biggest-Lie-in-Fitness.jpg?1486074629');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .data-graph {
-    background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
+  background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 

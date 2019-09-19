@@ -1,28 +1,48 @@
-import React from 'react';
-import './ExcerciseList.css';
+import React from 'react'
+import './ExcerciseList.css'
+import Nav from '../../Nav/Nav'
+import {Link} from 'react-router-dom'
+import FitContext from '../../FitContext/FitContext'
 
 class ExerciseList extends React.Component {
+
+  static contextType = FitContext;
+
   
-  renderExerciseList = (exerciseObj) => {
+  renderExerciseList = (exerciseObj, selectedWeek, selectedDay, selectExcercise) => {
     const key = Object.keys(exerciseObj).join('');
-    const obj = exerciseObj[key];
-    console.log(obj)
+    const exerciseArr = exerciseObj[key];
+    console.log(exerciseArr)
+    const exerciseName = exerciseArr.map(data => Object.keys(data).join(''))
+    console.log(exerciseName)
+    
 
     return (
       <>
         <div>
-          <h1>{key}</h1>
-          <p>input</p>
-          <ul>
+          <h1 className='exercise-title'>{key}</h1>
             <div className='exercise-list'>
-              <li>{obj.description1}</li>
-              <input></input>
+              <ul>
+                {exerciseName.map((name, index) => {
+                  const combineName = name.replace(/\s/g, '')
+                  console.log(index)
+                  return (
+                    <>
+                    <div className='exercise-container'>
+                      <li onClick={() => selectExcercise(combineName, name, index, exerciseArr)}><Link to={`/${selectedWeek.week}/${selectedDay}/${combineName}`}>{name}</Link></li>
+                      <div className='pr-input'>
+                        <input className='input-box'></input>
+                        <input className='input-box'></input>
+                        <input className='input-box'></input>
+                        <button className='submit-box'>Save</button>
+                      </div>
+                    </div>
+          
+                    </>
+                  )
+                  })}
+              </ul>
             </div>
-            <div className='exercise-list'>
-              <li>{obj.description2}</li>
-              <input></input>
-            </div>
-          </ul>
         </div> 
       </>
     )
@@ -31,10 +51,10 @@ class ExerciseList extends React.Component {
 
   render() {
     const {exerciseObj} = this.props
-    console.log(exerciseObj)
+    const {selectedWeek, selectedDay, selectExcercise} = this.context
     return (
       <>
-        {this.renderExerciseList(exerciseObj)}
+        {this.renderExerciseList(exerciseObj, selectedWeek, selectedDay, selectExcercise)}
       </>
     )
   }

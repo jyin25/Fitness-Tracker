@@ -17,12 +17,12 @@ class Arnold extends React.Component {
             loader={<div>Loading Chart</div>}
             data={[
               ['Workout', 'week1', `${newValue}`],
-              ['Bench Press', 200, 0],
+              ['Bench Press', 200, 150],
               ['Squat', 200, 0],
               ['Deadlift', 200, 0],
             ]}
             options={{
-              title: 'The Gains',
+              title: 'Gains',
               chartArea: { width: '40%' },
               hAxis: {
                 title: 'The Gains',
