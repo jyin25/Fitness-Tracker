@@ -29,7 +29,7 @@ class App extends React.Component {
       selectedExercise: '',
       pr: {
         Bench_Press: {
-          week1: '',
+          week1: [],
           week2: '',
           week3: ''
         },
@@ -91,16 +91,18 @@ class App extends React.Component {
   }
 
   storePrPerWeek = (pr, selectedWeek, exerciseName, selectedDay) => {
-    console.log(pr, selectedWeek, exerciseName, selectedDay)
+    console.log( selectedWeek, exerciseName, selectedDay)
     let newWeek = selectedWeek.week
     let newName = exerciseName.replace(/ /g,"_")
+    let newPr = [pr]
+    console.log(newPr)
     console.log(newName)
     this.setState((prevState, props) => ({
       pr: {
         ...prevState.pr,
         [newName]: {
           ...prevState.pr[newName],
-          [newWeek]: pr
+          [newWeek]: [...prevState.pr[newName][newWeek], ...newPr]
         }
       }
     }))
@@ -120,8 +122,10 @@ class App extends React.Component {
       selectMuscleGroup: this.selectMuscleGroup,
       selectExcercise: this.selectExcercise,
       selectedExercise: this.state.selectedExercise,
-      storePrPerWeek: this.storePrPerWeek
+      storePrPerWeek: this.storePrPerWeek,
+      graphData: this.state.pr.Bench_Press
     }
+    
     console.log(this.state.pr.Bench_Press)
     return (
       <div>

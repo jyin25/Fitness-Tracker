@@ -1,4 +1,4 @@
-@media only screen and (max-width: 500px) and (min-width: 320px) {
+
   .weeks-container {
     display: flex;
     justify-content: space-evenly;
@@ -27,7 +27,6 @@
   .column-container {
     padding: 0;
   }
-}
 
 
 
