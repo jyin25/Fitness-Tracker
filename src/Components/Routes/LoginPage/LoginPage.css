@@ -1,0 +1,11 @@
+.login {
+  font: white;
+  background-color: red;
+  border-radius: 5%;
+  text-align: center;
+}
+
+.login-container {
+  width: 7rem;
+  text-align: center;
+}

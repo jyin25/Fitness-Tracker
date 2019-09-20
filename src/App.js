@@ -1,8 +1,8 @@
-import React from 'react';
-import './App.css';
-import STORE from './Store';
-import Preset from './Components/Preset/Preset';
-import {Route, Switch} from 'react-router-dom';
+import React from 'react'
+import './App.css'
+import STORE from './Store'
+import Preset from './Components/Preset/Preset'
+import {Route, Switch} from 'react-router-dom'
 import FitContext from './Components/FitContext/FitContext'
 import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
@@ -11,6 +11,9 @@ import Main from './Components/Main/Main'
 import Self from './Components/Self/Self'
 import Muscle from './Components/Self/Muscle/Muscle'
 import DisplayExercise from './Components/DisplayExercise/DisplayExercise'
+import LoginForm from './Components/LoginForm/LoginForm'
+import Tracking from './Components/Tracking/Tracking'
+import SearchResult from './Components/SearchResult/SearchResult'
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +41,8 @@ class App extends React.Component {
           week2: '',
           week3: ''
         },
-      }
+      },
+      filteredExercises: [],
     }
   }
 
@@ -91,7 +95,6 @@ class App extends React.Component {
   }
 
   storePrPerWeek = (pr, selectedWeek, exerciseName, selectedDay) => {
-    console.log( selectedWeek, exerciseName, selectedDay)
     let newWeek = selectedWeek.week
     let newName = exerciseName.replace(/ /g,"_")
     let newPr = [pr]
@@ -108,6 +111,9 @@ class App extends React.Component {
     }))
   }
 
+  searchResult = (data) => {
+    this.setState({filteredExercises:data})
+  }
 
   render () {
     const contextValue = {
@@ -123,10 +129,11 @@ class App extends React.Component {
       selectExcercise: this.selectExcercise,
       selectedExercise: this.state.selectedExercise,
       storePrPerWeek: this.storePrPerWeek,
-      graphData: this.state.pr.Bench_Press
+      graphData: this.state.pr.Bench_Press,
+      searchResult: this.searchResult,
+      filteredExercises: this.state.searchResult
     }
     
-    console.log(this.state.pr.Bench_Press)
     return (
       <div>
         <FitContext.Provider value={contextValue}>
@@ -157,6 +164,15 @@ class App extends React.Component {
           <Route
             exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}/${this.state.selectedExercise.combineName}`}
             component={DisplayExercise}/>
+          <Route 
+            exact path='/Login'
+            component={LoginForm}/>
+          <Route           
+            exact path='/Tracking'
+            component={Tracking}/>
+          <Route           
+            exact path='/Search_result'
+            component={SearchResult}/>
             </Switch>
         </FitContext.Provider>
       </div>

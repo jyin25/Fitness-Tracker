@@ -1,20 +1,40 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
 import './Main.css'
+import {FaRegChartBar} from "react-icons/fa";
+import {FaDumbbell} from "react-icons/fa";
+import {FaRegListAlt} from "react-icons/fa";
+import {FaPowerOff} from "react-icons/fa";
+import LoginPage from '../Routes/LoginPage/LoginPage'
+import Header from '../Header/Header'
 
 function Main() {
   return (
-    <div className='main-page-container'>
-      <nav className='main-page-split preset-pic'>
-        <Link to='/PreSet'><p className='main-text'>Preset List</p></Link>
-      </nav>
-      <nav className='main-page-split make-pic'>
-        <Link to='/Self'><p className='main-text'>Make your own</p></Link>
-      </nav>
-      <nav className='main-page-split data-graph'>
-        <Link to='/Progress'><p className='main-text'>Advanced</p></Link>
-      </nav>
-    </div>
+
+    <>
+      <Header></Header>
+      <section className='background'>
+        <LoginPage></LoginPage>
+      </section>
+      <section className='nav-icons-container'>
+        <nav className='icon-container'>
+          <Link to='/PreSet'><FaDumbbell className='icon'/></Link>
+          <p>Preset workout</p>
+        </nav>
+        <nav className='icon-container'>
+          <Link to='/Tracking'><FaRegListAlt className='icon'/></Link>
+          <p>Custom tracking</p>
+        </nav>
+        <nav className='icon-container'>
+          <Link to='/PreSet'><FaRegChartBar className='icon'/></Link>
+          <p>Progress</p>
+        </nav>
+
+      </section>
+    
+
+
+    </>
   )
 }
 

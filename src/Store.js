@@ -1,6 +1,5 @@
 const STORE = {
-  data: 
-    [
+  data: [
       {week1:
         [
           {Monday: 
@@ -294,7 +293,8 @@ const STORE = {
   shoulder: [],
   legs: [],
   back: [],
-  muscle_groups: ['back', 'quads', 'bicep', 'tricep', 'chest', 'shoulder', ' calfs', 'abs', 'lats', 'deltoids']
+  muscle_groups: ['back', 'quads', 'bicep', 'tricep', 'chest', 'shoulder', ' calfs', 'abs', 'lats', 'deltoids'],
+  exercises: ['back', 'back1', 'back2']
 
 }
 
