@@ -131,11 +131,10 @@ class App extends React.Component {
       storePrPerWeek: this.storePrPerWeek,
       graphData: this.state.pr.Bench_Press,
       searchResult: this.searchResult,
-      filteredExercises: this.state.searchResult,
+      filteredExercises: this.state.filteredExercises,
       selectedMuscleGroup: this.state.muscleGroup,
       muscleGroupData: this.state.muscleGroupData,
     }
-    console.log(this.state.muscleGroup)
     
     return (
       <div>

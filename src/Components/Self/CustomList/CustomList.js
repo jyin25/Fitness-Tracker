@@ -40,7 +40,7 @@ class CustomList extends React.Component {
         <Search></Search>
         <section>
           <h1>Custom List</h1>
-          {this.getCustomList()}
+          <ul>{this.getCustomList()}</ul>
         </section>
       </>
     )

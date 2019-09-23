@@ -306,7 +306,7 @@ const STORE = {
     {lats: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
     {deltoids: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
   ],
-  exercises: ['back', 'back1', 'back2'] //used by searching
+  exercises: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}},{pull:{video:'sdf',howTo:'sdf'}}] //used by searching
 
 }
 

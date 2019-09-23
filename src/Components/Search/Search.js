@@ -15,25 +15,32 @@ class Search extends React.Component {
     }
   }
 
-
-  handleSearch = (e) => {
-    e.preventDefault()
-    const filteredExercises = Store.exercises.filter(searchTerm => searchTerm.includes(this.state.searchTerm))
-    this.context.searchResult(filteredExercises)
-  }
-
   handleSearchText = (e) => {
     this.setState({searchTerm: e.target.value})
   }
 
-  render() {
+  // handleSearch = (e, searchResult) => {
+  //   console.log(e)
+  //   e.preventDefault()
+  //   const filteredExercises = Store.exercises.filter(searchTerm => searchTerm.includes(this.state.searchTerm))
+  //   console.log(filteredExercises)
+  // }
 
+  handleClick = (e, searchResult) => {
+    //should be searching the exercise state from componentdidmount
+
+    const filteredExercises = Store.exercises.filter(searchTerm => Object.keys(searchTerm).join().includes(this.state.searchTerm))
+    searchResult(filteredExercises)
+  }
+
+  render() {
+    const {searchResult} = this.context
     return (
       <> 
         <section className='background'>
-          <form className='search' onSubmit={(e) => this.handleSearch(e)}>
+          <form className='search' onSubmit={(e) => this.handleSearch(e, searchResult)}>
             <input type='text' placeholder='Search..' value={this.state.searchTerm} onChange={(e) => this.handleSearchText(e)}></input>
-            <Link to='/Search_result'><button type='submit'><FaSearch /></button></Link>
+            <Link to='/Search_result'><button type='submit' onClick={(e) => this.handleClick(e, searchResult)}><FaSearch /></button></Link>
           </form>
         </section>
       </>
