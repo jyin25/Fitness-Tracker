@@ -7,6 +7,7 @@ import {FaRegListAlt} from "react-icons/fa";
 import {FaPowerOff} from "react-icons/fa";
 import LoginPage from '../Routes/LoginPage/LoginPage'
 import Header from '../Header/Header'
+import Register from '../Routes/Register/Register'
 
 function Main() {
   return (
@@ -15,6 +16,7 @@ function Main() {
       <Header></Header>
       <section className='background'>
         <LoginPage></LoginPage>
+        <Register></Register>
       </section>
       <section className='nav-icons-container'>
         <nav className='icon-container'>
@@ -26,7 +28,7 @@ function Main() {
           <p>Custom tracking</p>
         </nav>
         <nav className='icon-container'>
-          <Link to='/PreSet'><FaRegChartBar className='icon'/></Link>
+          <Link to='/progress'><FaRegChartBar className='icon'/></Link>
           <p>Progress</p>
         </nav>
 

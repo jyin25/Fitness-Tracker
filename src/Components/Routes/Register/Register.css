@@ -1,12 +1,12 @@
-.login {
+.register {
   font: white;
   background-color: red;
   border-radius: 5%;
   text-align: center;
 }
 
-.login-container {
+.register-container {
   width: 7rem;
   text-align: center;
-  margin-right: .5rem;
+  margin-left: .5rem;
 }

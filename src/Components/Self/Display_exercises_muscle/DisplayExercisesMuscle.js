@@ -13,9 +13,6 @@ class DisplayExercisesMuscle extends React.Component {
     super(props)
     this.state = {
       exercises: [
-        {pullup: {
-          isCheck: false
-        }},
         {
           exercise: 'pullup',
           isCheck: false
@@ -59,24 +56,25 @@ class DisplayExercisesMuscle extends React.Component {
     console.log(exerciseList) //post request to database
   }
 
-  renderSelectedMuscleGroup = (muscle, muscleData) => {
+  renderSelectedMuscleGroup = (muscle, muscleData, selectExcercise) => {
+    console.log(muscleData)
     const exerciseArr = muscleData[muscle].exercise
-
+    console.log(exerciseArr)
     return exerciseArr.map((data, index) => {
       const exerciseName = Object.keys(data).join()
       const newVal = this.state.exercises.find(data => data.exercise === exerciseName)
-
+      const combineName = exerciseName.replace(/\s/g, '')
       return (
         <>
           <input type='checkbox' checked={newVal.isChecked} id={exerciseName} onChange={(e) => this.handleChange(e)}/>
-          <label><Link to={`/musclegroup/${exerciseName}`}>{exerciseName}</Link></label>
+          <label onClick={() => selectExcercise(combineName, exerciseName, index, exerciseArr)}><Link to={`/${exerciseName}`}>{exerciseName}</Link></label>
         </>
       )
     })
   }
  
   render() {
-    const {selectedMuscleGroup, muscleGroupData} = this.context
+    const {selectedMuscleGroup, muscleGroupData, selectExcercise} = this.context
     return (
       <> 
         <Header></Header>
@@ -84,7 +82,7 @@ class DisplayExercisesMuscle extends React.Component {
         <section>
           <h1>{selectedMuscleGroup}</h1>
           <form className='muscle-group-exercises' onSubmit={(e) => this.handleSubmit(e)}>
-            {this.renderSelectedMuscleGroup(selectedMuscleGroup, muscleGroupData)}
+            {this.renderSelectedMuscleGroup(selectedMuscleGroup, muscleGroupData, selectExcercise)}
             <input type='submit'></input>
           </form>
         </section>
