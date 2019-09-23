@@ -5,6 +5,7 @@ import Weeks from '../Weeks/Weeks'
 import Days from '../Days/Days'
 import Nav from '../Nav/Nav'
 import './preSet.css'
+import Header from '../Header/Header'
 
 class Preset extends React.Component {
   static contextType = FitContext;
@@ -14,7 +15,8 @@ class Preset extends React.Component {
     const {isHidden} = this.context.selectedWeek
     return (
       <>
-        <Nav></Nav>
+        <Header></Header>
+        <section className='background'></section>
         <header className='week-title-container'>
           <h1 className='title'>Weeks</h1>
         </header>

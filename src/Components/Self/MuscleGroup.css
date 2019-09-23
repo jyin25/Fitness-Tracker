@@ -1,0 +1,30 @@
+.muscle-container {
+  border: 1px black solid;
+  height: 12rem;
+  width: 17rem;
+  margin-bottom: 2rem;
+}
+
+.muscle-text {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: .5rem;
+}
+
+.muscle-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.first-muscle-group {
+  list-style: none;
+  padding: 0
+}
+
+.second-muscle-group {
+  list-style: none;
+  padding: 0
+}

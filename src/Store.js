@@ -287,14 +287,26 @@ const STORE = {
     ],
   weeksRight: [2,4,6,8,10,12],
   weeksLeft: [1,3,5,7,9,11],
+  weeks:[1,2,3,4,5,6,7,8,9,10,11,12],
   days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
   chest: [],
   arms: [],
   shoulder: [],
   legs: [],
   back: [],
-  muscle_groups: ['back', 'quads', 'bicep', 'tricep', 'chest', 'shoulder', ' calfs', 'abs', 'lats', 'deltoids'],
-  exercises: ['back', 'back1', 'back2']
+  muscle_groups: [
+    {back: {img: 'https://artifacts.bbcomcdn.com/@bbcom/exercises-app/2.0.0/img/guide-4.gif', exercise:[{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]}},
+    {quads: {img: 'sdf', exercise:[{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]}},
+    {biceps: {img: '666666666666666666', exercise:[{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]}},
+    {triceps: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {chest: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {shoulders: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {calfs: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {abs: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {lats: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+    {deltoids: [{pullup:{video:'sdfsdf',howTo:'asa'}},{DeadLift:{video:'sdf',howTo:'sdf'}}]},
+  ],
+  exercises: ['back', 'back1', 'back2'] //used by searching
 
 }
 

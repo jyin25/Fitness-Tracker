@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from '../Nav/Nav'
 import FitContext from '../FitContext/FitContext'
+import Header from '../Header/Header'
 
 class DisplayExercise extends React.Component {
 
@@ -21,9 +22,11 @@ class DisplayExercise extends React.Component {
 
   render() {
     const {combineName, name, index, exerciseArr} = this.context.selectedExercise
+    console.log(exerciseArr)
     return (
       <>
-        <Nav></Nav>
+        <Header></Header>
+        <section className='background'></section>
         {this.renderExerciseInfo(name, index, exerciseArr)}
       </>
     )

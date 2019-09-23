@@ -38,7 +38,7 @@ class Weeks extends React.Component {
 
   render() {
     const style = (this.state.hidden? {display: 'none'}: {})
-    const {weeksRight, weeksLeft, selectedWeek} = this.context
+    const {weeksRight, weeksLeft, selectedWeek} = this.context //need to have database sort by odd/even
     return (
       <section className='weeks-container'>
         <div className='left-column'>

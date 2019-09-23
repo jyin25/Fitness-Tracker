@@ -3,6 +3,7 @@ import FitContext from '../FitContext/FitContext';
 import {Link} from 'react-router-dom';
 import Nav from '../Nav/Nav'
 import './Days.css'
+import Header from '../Header/Header'
 
 class Days extends React.Component {
   static contextType = FitContext;
@@ -24,7 +25,8 @@ class Days extends React.Component {
     console.log(this.context.selectedWeek)
     return (
       <>
-        <Nav></Nav>
+        <Header></Header>
+        <section className='background'></section>
         {selectedWeek.value && 
         <header className='day-title-container'>
           <h1 className='title'>Days</h1>

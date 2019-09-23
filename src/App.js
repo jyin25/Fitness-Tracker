@@ -8,12 +8,13 @@ import Days from './Components/Days/Days'
 import Exercise from './Components/Exercise/Exercise'
 import Progress from './Components/Progress/Progress'
 import Main from './Components/Main/Main'
-import Self from './Components/Self/Self'
-import Muscle from './Components/Self/Muscle/Muscle'
+import MuscleGroup from './Components/Self/MuscleGroup'
+import DisplayExercisesMuscle from './Components/Self/Display_exercises_muscle/DisplayExercisesMuscle'
 import DisplayExercise from './Components/DisplayExercise/DisplayExercise'
 import LoginForm from './Components/LoginForm/LoginForm'
 import Tracking from './Components/Tracking/Tracking'
 import SearchResult from './Components/SearchResult/SearchResult'
+import CustomList from './Components/Self/CustomList/CustomList'
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends React.Component {
       },
       selectedDay: '',
       muscleGroup: '',
+      muscleGroupData: [],
       selectedExercise: '',
       pr: {
         Bench_Press: {
@@ -61,14 +63,6 @@ class App extends React.Component {
     this.setState({selectedDay: data})
   }
 
-  setGroup = (id, name) => {
-    this.setState({
-      muscleGroup: {
-        id,
-        name
-      }
-    })
-  }
 
   componentWillMount() {
     fetch("http://wger.de/api/v2/exercise/", {
@@ -82,7 +76,13 @@ class App extends React.Component {
   }
 
   selectMuscleGroup = (data) => {
-    this.setState({muscleGroup: data})
+    const name = Object.keys(data).join()
+    this.setState({
+      muscleGroup: name
+    })
+    this.setState({
+      muscleGroupData: data
+    })
   }
 
   selectExcercise = (combineName, name, index, exerciseArr) => {
@@ -131,49 +131,55 @@ class App extends React.Component {
       storePrPerWeek: this.storePrPerWeek,
       graphData: this.state.pr.Bench_Press,
       searchResult: this.searchResult,
-      filteredExercises: this.state.searchResult
+      filteredExercises: this.state.searchResult,
+      selectedMuscleGroup: this.state.muscleGroup,
+      muscleGroupData: this.state.muscleGroupData,
     }
+    console.log(this.state.muscleGroup)
     
     return (
       <div>
         <FitContext.Provider value={contextValue}>
           <Switch>
-          <Route
-            exact path='/'
-            component={Main}/>
-          <Route
-            exact path='/PreSet'
-            component={Preset}/>
-          <Route
-            path='/Self'
-            component={Self}/>
-          <Route
-            path='/Progress'
-            component={Progress}/>
-          <Route
-            exact path={`/Preset/week${this.state.selectedWeek.value}`}
-            component={Days}/>
-          
-          <Route
-            exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}`}
-            component={Exercise}/>
-          
-          <Route 
-            exact path={`/muscleGroup/${this.state.muscleGroup}`}
-            component={Muscle}/>
-          <Route
-            exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}/${this.state.selectedExercise.combineName}`}
-            component={DisplayExercise}/>
-          <Route 
-            exact path='/Login'
-            component={LoginForm}/>
-          <Route           
-            exact path='/Tracking'
-            component={Tracking}/>
-          <Route           
-            exact path='/Search_result'
-            component={SearchResult}/>
-            </Switch>
+            <Route
+              exact path='/'
+              component={Main}/>
+            <Route
+              exact path='/PreSet'
+              component={Preset}/>
+            <Route
+              exact path='/MuscleGroup'
+              component={MuscleGroup}/>
+            <Route
+              path='/Progress'
+              component={Progress}/>
+            <Route
+              exact path={`/Preset/week${this.state.selectedWeek.value}`}
+              component={Days}/>
+            
+            <Route
+              exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}`}
+              component={Exercise}/>
+            
+            <Route 
+              exact path={`/muscleGroup/${this.state.muscleGroup}`}
+              component={DisplayExercisesMuscle}/>
+            <Route
+              exact path={`/${this.state.selectedExercise.combineName}`}
+              component={DisplayExercise}/>
+            <Route 
+              exact path='/Login'
+              component={LoginForm}/>
+            <Route           
+              exact path='/Tracking'
+              component={Tracking}/>
+            <Route           
+              exact path='/Search_result'
+              component={SearchResult}/>
+            <Route 
+              exact path='/Customlist'
+              component={CustomList}/>
+          </Switch>
         </FitContext.Provider>
       </div>
 

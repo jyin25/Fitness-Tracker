@@ -70,11 +70,9 @@ class ExerciseList extends React.Component {
 
 
   renderExerciseList = (exerciseObj, selectedWeek, selectedDay, selectExcercise, storePrPerWeek) => {
-    const key = Object.keys(exerciseObj).join('');
-    console.log(exerciseObj)
-    const exerciseArr = exerciseObj[key];
-    console.log(exerciseArr)
-    const exerciseName = exerciseArr.map(data => Object.keys(data).join(''))
+    const key = Object.keys(exerciseObj).join(''); // muscle group name
+    const exerciseArr = exerciseObj[key]; //exercises for specific musle group in the arr
+    const exerciseName = exerciseArr.map(data => Object.keys(data).join('')) //grabbing each of the exercises in the arr
 
     return (
       <>
@@ -87,7 +85,7 @@ class ExerciseList extends React.Component {
                   return (
                     <>
                       <div className='exercise-container'>
-                        <li onClick={() => selectExcercise(combineName, name, index, exerciseArr)}><Link to={`/${selectedWeek.week}/${selectedDay}/${combineName}`}>{name}</Link></li>
+                        <li onClick={() => selectExcercise(combineName, name, index, exerciseArr)}><Link to={`/${combineName}`}>{name}</Link></li>
                         <form className='pr-input' onSubmit={(e) => this.handleSubmit(e, name, selectedWeek, storePrPerWeek, selectedDay, combineName)}>
                           <input className='input-box' value={this.state[combineName].input1} type='text' onChange={(e) => this.handleInput1(e, combineName)}></input>
                           <input className='input-box' value={this.state[combineName].input2} type='text' onChange={(e) => this.handleInput2(e, combineName)}></input>
@@ -107,7 +105,7 @@ class ExerciseList extends React.Component {
 
 
   render() {
-    const {exerciseObj} = this.props
+    const {exerciseObj} = this.props //object with muscle group name and nested array with exercises separated by each muscle group
     const {selectedWeek, selectedDay, selectExcercise, storePrPerWeek} = this.context
     return (
       <>

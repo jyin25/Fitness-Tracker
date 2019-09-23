@@ -3,6 +3,8 @@ import FitContext from '../FitContext/FitContext';
 import Reps from './Reps/Reps'
 import ExerciseList from './ExerciseList/ExerciseList'
 import Nav from '../Nav/Nav'
+import Header from '../Header/Header'
+
 class Exercies extends React.Component {
   static contextType = FitContext;
 
@@ -27,7 +29,8 @@ class Exercies extends React.Component {
     const {preSetExercises, selectedWeek, selectedDay} = this.context;
     return (
       <>
-        <Nav></Nav>
+        <Header></Header>
+        <section className='background'></section>
         <p>Click on the exercise for more information</p>
         <div className='Workout-List-Container'>{this.renderExercise(preSetExercises, selectedWeek, selectedDay)}</div>
       </>

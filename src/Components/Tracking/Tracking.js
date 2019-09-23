@@ -19,12 +19,12 @@ class Tracking extends React.Component {
           </div>
           <div className='nav-icons-container'>
             <nav className='icon-container'>
-              <Link to='/PreSet'><FaTasks className='icon'/></Link>
-              <p>Preset workout</p>
+              <Link to='/CustomList'><FaTasks className='icon'/></Link>
+              <p>Custom List</p>
             </nav>
             <nav className='icon-container'>
-              <Link to='/PreSet'><FaDumbbell className='icon'/></Link>
-              <p>Preset workout</p>
+              <Link to='/MuscleGroup'><FaDumbbell className='icon'/></Link>
+              <p>Set Custom List</p>
             </nav>
           </div>
         </section>

@@ -32,7 +32,7 @@ class Search extends React.Component {
       <> 
         <section className='background'>
           <form className='search' onSubmit={(e) => this.handleSearch(e)}>
-            <input type='text' placeHolder='Search..' value={this.state.searchTerm} onChange={(e) => this.handleSearchText(e)}></input>
+            <input type='text' placeholder='Search..' value={this.state.searchTerm} onChange={(e) => this.handleSearchText(e)}></input>
             <Link to='/Search_result'><button type='submit'><FaSearch /></button></Link>
           </form>
         </section>
