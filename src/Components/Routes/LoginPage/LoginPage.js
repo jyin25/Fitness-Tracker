@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <> 
-        <Link to='/login'>
+        <Link to='/auth/login'>
           <div className='login-container'>
             <h1 className='login'>Login</h1>
           </div>

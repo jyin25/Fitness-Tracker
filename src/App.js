@@ -15,6 +15,7 @@ import LoginForm from './Components/LoginForm/LoginForm'
 import Tracking from './Components/Tracking/Tracking'
 import SearchResult from './Components/SearchResult/SearchResult'
 import CustomList from './Components/Self/CustomList/CustomList'
+import RegisterForm from './Components/RegisterForm/RegisterForm'
 
 class App extends React.Component {
   constructor(props) {
@@ -167,7 +168,7 @@ class App extends React.Component {
               exact path={`/${this.state.selectedExercise.combineName}`}
               component={DisplayExercise}/>
             <Route 
-              exact path='/Login'
+              exact path='/auth/Login'
               component={LoginForm}/>
             <Route           
               exact path='/Tracking'
@@ -178,6 +179,9 @@ class App extends React.Component {
             <Route 
               exact path='/Customlist'
               component={CustomList}/>
+            <Route 
+              exact path='/RegisterForm'
+              component={RegisterForm}/>
           </Switch>
         </FitContext.Provider>
       </div>

@@ -11,7 +11,6 @@ import Register from '../Routes/Register/Register'
 
 function Main() {
   return (
-
     <>
       <Header></Header>
       <section className='background'>
