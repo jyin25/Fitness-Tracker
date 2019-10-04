@@ -2,8 +2,10 @@ import React from 'react'
 import Header from '../../Header/Header'
 import Search from '../../Search/Search'
 import FitContext from '../../FitContext/FitContext'
-import store from '../../../Store'
 import {Link} from 'react-router-dom'
+import config from '../../../config'
+import TokenService from '../../../services/Token-service'
+import './DisplayExercisesMuscle.css'
 
 class DisplayExercisesMuscle extends React.Component {
 
@@ -12,78 +14,112 @@ class DisplayExercisesMuscle extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      exercises: [
-        {
-          exercise: 'pullup',
-          isCheck: false
-        },
-        {
-          exercise: 'DeadLift',
-          isCheck: false
-        }
-      ],
+      filterExercises: [],
       customList: [],
+      exercises: [],
     }
   }
 
   componentDidMount = () => {
-    //pull all exercises with isChecked and name from api and append to state
+    const muscleGroupId = this.context.selectedGroup.id
+    fetch (`${config.API_ENDPOINT}/musclegroup/${muscleGroupId}`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => {
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json().then(exercises => this.setState({exercises}))
+      })
+
+    fetch(`${config.API_ENDPOINT}/customlist`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => {
+        (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json().then(customList => {
+          const customExerciseId = customList.map(data => data.exercise_id)
+          this.setState({customList: customExerciseId})
+        })
+      })
+
   }
 
+
   handleChange = (e) => {
-    const selectedExercise = this.state.exercises.filter(data => data.exercise === e.target.id)
-    selectedExercise[0].isCheck = e.target.checked
+    const selectedExercise = this.state.exercises.map(data => {
+      const num = parseInt(data.id)
+      const selectedNum = parseInt(e.target.id)
+      if(num === selectedNum) {
+        data.is_check = !data.is_check
+      }
+      return data
+    })
 
     this.setState({
-      ...this.state.exercises,
-      selectedExercise
+      filterExercises: selectedExercise
     })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const checkedExercise = this.state.exercises.filter(data => data.isCheck === true)
-    const exerciseList = checkedExercise.map(data => data.exercise)
+    const checkedExercise = this.state.filterExercises.filter(data => data.is_check === true)
+    const exerciseList = checkedExercise.map(data => data.id)
+    const newList = exerciseList.filter(val => !this.state.customList.includes(val))
     this.setState({
-      customList: [...this.state.customList, ...exerciseList]
+      customList: [...this.state.customList, ...newList]
     })
 
-    this.updateDatabaseWithList(exerciseList)
+    const insertList = {
+      exercise_id: newList
+    }
+
+    fetch (`${config.API_ENDPOINT}/customlist`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(insertList)
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json().then(data => console.log(data))
+    })
   }
 
-  updateDatabaseWithList = (exerciseList) => {
-    console.log(exerciseList) //post request to database
-  }
 
   renderSelectedMuscleGroup = (muscle, muscleData, selectExcercise) => {
-    console.log(muscleData)
-    const exerciseArr = muscleData[muscle].exercise
-    console.log(exerciseArr)
-    return exerciseArr.map((data, index) => {
-      const exerciseName = Object.keys(data).join()
-      const newVal = this.state.exercises.find(data => data.exercise === exerciseName)
-      const combineName = exerciseName.replace(/\s/g, '')
+
+    return this.state.exercises.map((data) => {
+      const newExerciseName = data.exercise_name.split('_').join(' ')
       return (
-        <>
-          <input type='checkbox' checked={newVal.isChecked} id={exerciseName} onChange={(e) => this.handleChange(e)}/>
-          <label onClick={() => selectExcercise(combineName, exerciseName, index, exerciseArr)}><Link to={`/${exerciseName}`}>{exerciseName}</Link></label>
-        </>
+        <div className='muscle-exercise-container'>
+          <input className='input-checkbox' type='checkbox' checked={data.isChecked} id={data.id} onChange={(e) => this.handleChange(e)}/>
+          <label onClick={() => this.context.selectExcercise(newExerciseName, data.exercise_name, data.video, data.exercise_how_to)}><Link to={`/${data.exercise_name}`}><p className='muscle-group-exercise-name'>{newExerciseName}</p></Link></label>
+        </div>
       )
     })
   }
  
   render() {
-    const {selectedMuscleGroup, muscleGroupData, selectExcercise} = this.context
     return (
       <> 
         <Header></Header>
         <Search></Search>
         <section>
-          <h1>{selectedMuscleGroup}</h1>
+          <h1 className='title-text'>{this.context.selectedGroup.muscle_name}</h1>
           <form className='muscle-group-exercises' onSubmit={(e) => this.handleSubmit(e)}>
-            {this.renderSelectedMuscleGroup(selectedMuscleGroup, muscleGroupData, selectExcercise)}
-            <input type='submit'></input>
+            {this.renderSelectedMuscleGroup()}
+            <div className='submit-container'>
+              <button type='submit' className='search-submit'>Save</button>
+            </div>
           </form>
         </section>
 

@@ -46,4 +46,35 @@
   height: 20px;
   display: flex;
   align-items: center;
+  font-size: 20px;
+  color: white;
+}
+
+.spotify-player {
+  margin-top: 10rem;
+}
+
+body {
+  background-color: #273B49;
+  height: 100%;
+}
+
+.icon {
+  border-radius: 50%;
+  padding: .7rem;
+}
+
+.preset-icon {
+  background-color: #70D0EE;
+  color: white;
+}
+
+.custom-icon {
+  background-color: #0B7CC7;
+  color: white;
+}
+
+.progress-icon {
+  background-color: #AB07B1;
+  color: white;
 }

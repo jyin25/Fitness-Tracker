@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css'
-import STORE from './Store'
 import Preset from './Components/Preset/Preset'
 import {Route, Switch} from 'react-router-dom'
 import FitContext from './Components/FitContext/FitContext'
@@ -16,15 +15,16 @@ import Tracking from './Components/Tracking/Tracking'
 import SearchResult from './Components/SearchResult/SearchResult'
 import CustomList from './Components/Self/CustomList/CustomList'
 import RegisterForm from './Components/RegisterForm/RegisterForm'
+import CustomProgress from './Components/Progress/CustomProgress'
+import PrivateRoute from './Components/Routes/PrivateRoute/PrivateRoute'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state= {
-      STORE,
-      weeksLeft: this.props.store.weeksLeft,
-      weeksRight: this.props.store.weeksRight,
-      days: this.props.store.days,
+      preSetExercises: [],
+      weeks: [],
+      days: [],
       selectedWeek: {
         value: '',
         week: ''
@@ -32,111 +32,89 @@ class App extends React.Component {
       selectedDay: '',
       muscleGroup: '',
       muscleGroupData: [],
-      selectedExercise: '',
-      pr: {
-        Bench_Press: {
-          week1: [],
-          week2: '',
-          week3: ''
-        },
-        leg_press: {
-          week1: '',
-          week2: '',
-          week3: ''
-        },
-      },
+      selectedExercise: {},
       filteredExercises: [],
+      allExercises: [],
+      selectedGroup: [],
+      userName:'',
     }
+  }
+
+  setWeeks = weeks => {
+    this.setState({weeks})
   }
 
   selectWeek = (data) => {
     console.log(data)
-    if(data >= 1 && data <= 4) {
-      this.setState({selectedWeek: {week: 'week1', value: data}})
-    } else if (data >= 5 && data <=8) {
-      this.setState({selectedWeek: {week: 'week5', value: data}})
-    } else {
-      this.setState({selectedWeek: {week: 'week9', value: data}})
-    }
+    this.setState({selectedWeek: {id: data.id, value: data.week_number}})
+
   }
 
   selectDay = (data) => {
-    this.setState({selectedDay: data})
+    this.setState({selectedDay: {id: data.id, value: data.day_name}})
   }
 
-
-  componentWillMount() {
-    fetch("http://wger.de/api/v2/exercise/", {
-      headers: {
-        'Authorization': 'Token c562f5998580918b7ce6aa86f6478415a2e69bca',
-        'content-type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
+  setDays = (days) => {
+    this.setState({days})
   }
 
-  selectMuscleGroup = (data) => {
-    const name = Object.keys(data).join()
-    this.setState({
-      muscleGroup: name
-    })
-    this.setState({
-      muscleGroupData: data
-    })
+  getAllExercises = (allExercises) => {
+    this.setState({allExercises})
   }
 
-  selectExcercise = (combineName, name, index, exerciseArr) => {
+  setExercises = (preSetExercises) => {
+    this.setState({preSetExercises})
+  }
+
+  selectExcercise = (newExerciseName, name, video, exercise_how_to, is_check) => {
     this.setState({selectedExercise: {
-      combineName: combineName,
+      newExerciseName: newExerciseName,
       name: name,
-      index: index,
-      exerciseArr: exerciseArr
+      video: video,
+      howTo: exercise_how_to,
+      isCheck: is_check
     }})
   }
 
-  storePrPerWeek = (pr, selectedWeek, exerciseName, selectedDay) => {
-    let newWeek = selectedWeek.week
-    let newName = exerciseName.replace(/ /g,"_")
-    let newPr = [pr]
-    console.log(newPr)
-    console.log(newName)
-    this.setState((prevState, props) => ({
-      pr: {
-        ...prevState.pr,
-        [newName]: {
-          ...prevState.pr[newName],
-          [newWeek]: [...prevState.pr[newName][newWeek], ...newPr]
-        }
-      }
-    }))
+  searchResult = (filteredExercises) => {
+    this.setState({filteredExercises})
   }
 
-  searchResult = (data) => {
-    this.setState({filteredExercises:data})
+  selectMuscleGroup = (selectedGroup) => {
+    this.setState({selectedGroup})
+  }
+
+  saveUserName = (data) => {
+    console.log(data)
+    this.setState({userName: data})
   }
 
   render () {
     const contextValue = {
-      weeksLeft: this.state.weeksLeft,
-      weeksRight: this.state.weeksRight,
+      saveUserName: this.saveUserName,
+      userName: this.state.userName,
+      getAllExercises: this.getAllExercises,
+      selectedGroup: this.state.selectedGroup,
+      allExercises: this.state.allExercises,
+      setDays: this.setDays,
+      setWeeks: this.setWeeks,
+      weeks: this.state.weeks,
       days: this.state.days,
+      preSetExercises: this.state.preSetExercises,
+      setExercises: this.setExercises,
       selectWeek: this.selectWeek,
       selectedWeek: this.state.selectedWeek,
       selectDay: this.selectDay,
-      preSetExercises: this.state.STORE,
       selectedDay: this.state.selectedDay,
       selectMuscleGroup: this.selectMuscleGroup,
       selectExcercise: this.selectExcercise,
       selectedExercise: this.state.selectedExercise,
-      storePrPerWeek: this.storePrPerWeek,
-      graphData: this.state.pr.Bench_Press,
       searchResult: this.searchResult,
       filteredExercises: this.state.filteredExercises,
       selectedMuscleGroup: this.state.muscleGroup,
       muscleGroupData: this.state.muscleGroupData,
     }
-    
+
     return (
       <div>
         <FitContext.Provider value={contextValue}>
@@ -144,33 +122,33 @@ class App extends React.Component {
             <Route
               exact path='/'
               component={Main}/>
-            <Route
+            <PrivateRoute
               exact path='/PreSet'
               component={Preset}/>
             <Route
               exact path='/MuscleGroup'
               component={MuscleGroup}/>
-            <Route
-              path='/Progress'
+            <PrivateRoute
+              exact path='/Progress'
               component={Progress}/>
             <Route
               exact path={`/Preset/week${this.state.selectedWeek.value}`}
               component={Days}/>
             
             <Route
-              exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay}`}
+              exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay.value}`}
               component={Exercise}/>
             
             <Route 
-              exact path={`/muscleGroup/${this.state.muscleGroup}`}
+              exact path={`/muscleGroup/${this.state.selectedGroup.muscle_name}`}
               component={DisplayExercisesMuscle}/>
             <Route
-              exact path={`/${this.state.selectedExercise.combineName}`}
+              exact path={`/${this.state.selectedExercise.name}`}
               component={DisplayExercise}/>
             <Route 
-              exact path='/auth/Login'
+              exact path='/Login'
               component={LoginForm}/>
-            <Route           
+            <PrivateRoute           
               exact path='/Tracking'
               component={Tracking}/>
             <Route           
@@ -182,6 +160,9 @@ class App extends React.Component {
             <Route 
               exact path='/RegisterForm'
               component={RegisterForm}/>
+            <Route 
+              exact path='/CustomProgress'
+              component={CustomProgress}/>
           </Switch>
         </FitContext.Provider>
       </div>

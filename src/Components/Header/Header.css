@@ -1,3 +1,16 @@
 .heading-title {
   text-align: center;
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+  color: #77D6F3;
+}
+
+.login-register {
+  display: flex;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #273B49;
 }

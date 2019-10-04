@@ -1,0 +1,41 @@
+.muscle-group-exercises {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px black solid;
+  margin-top: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  background-color: #54D684;
+  border-radius: 6px;
+}
+
+.search-submit {
+  margin-top: 1rem;
+  width: 6rem;
+}
+
+.submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-text {
+  text-align: center;
+}
+
+.submit-container > button {
+  height: 2rem;
+  border-radius: 8px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 1.1rem;
+}

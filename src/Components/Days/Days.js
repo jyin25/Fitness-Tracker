@@ -1,18 +1,32 @@
 import React from 'react';
 import FitContext from '../FitContext/FitContext';
 import {Link} from 'react-router-dom';
-import Nav from '../Nav/Nav'
 import './Days.css'
 import Header from '../Header/Header'
+import config from '../../config'
+import TokenService from '../../services/Token-service'
 
 class Days extends React.Component {
   static contextType = FitContext;
+
+  componentDidMount = () => {
+    fetch (`${config.API_ENDPOINT}/weeks/${this.context.selectedWeek.id}`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+    })
+      .then(res => {
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json().then(data => this.context.setDays(data))
+      })
+  }
   
   renderDays (days) {
     const render = days.map(data => {
       return (
-        <Link to={`/week${this.context.selectedWeek.value}/${data}`}>
-          <h3 className='day-container' onClick={() => this.context.selectDay(data)}>{data}</h3>
+        <Link to={`/week${this.context.selectedWeek.value}/${data.day_name}`}>
+          <h3 className='day-container' onClick={() => this.context.selectDay(data)}>{data.day_name}</h3>
         </Link>
       )
     })
@@ -21,8 +35,8 @@ class Days extends React.Component {
   
   
   render() {
-    const {days, selectedWeek} = this.context
-    console.log(this.context.selectedWeek)
+    const {selectedWeek, days} = this.context
+    console.log(days)
     return (
       <>
         <Header></Header>

@@ -1,0 +1,14 @@
+.progress-title {
+  color: white;
+  text-align: center;
+  margin-top: 5rem;
+  border: 1px black solid;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  background-color: #925446;
+}

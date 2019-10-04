@@ -5,11 +5,12 @@ import './LoginPage.css'
 class LoginPage extends React.Component {
 
   render() {
+
     return (
       <> 
-        <Link to='/auth/login'>
+        <Link to='/login'>
           <div className='login-container'>
-            <h1 className='login'>Login</h1>
+            <p className='login'>Login</p>
           </div>
         </Link>
       </>

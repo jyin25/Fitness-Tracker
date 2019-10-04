@@ -9,7 +9,7 @@ class Register extends React.Component {
       <> 
         <Link to='/RegisterForm'>
           <div className='register-container'>
-            <h1 className='register'>Register</h1>
+            <p className='register'>Register</p>
           </div>
         </Link>
       </>

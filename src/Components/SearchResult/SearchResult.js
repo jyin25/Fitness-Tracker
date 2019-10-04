@@ -1,11 +1,12 @@
 import React from 'react'
 import './SearchResult.css'
 import {FaSearch} from "react-icons/fa"
-import Store from '../../Store'
 import FitContext from '../FitContext/FitContext'
 import Search from '../Search/Search'
 import Header from '../Header/Header'
 import {Link} from 'react-router-dom'
+import config from '../../config'
+import TokenService from '../../services/Token-service'
 
 class SetTracking extends React.Component {
   static contextType = FitContext;
@@ -13,80 +14,108 @@ class SetTracking extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      exercises: [
-        {
-          exercise: 'pullup',
-          isCheck: false
-        },
-        {
-          exercise: 'DeadLift',
-          isCheck: false
-        },
-        {
-          exercise: 'pull',
-          isCheck: false
-        }
-      ],
+      filterExercises: [],
       customList: [],
+      filteredExercises: [],
     }
   }
 
   componentDidMount = () => {
-    //pull all exercises with isChecked and name from api and append to state
+    this.setState({filteredExercises: this.context.filteredExercises})
+
+    fetch(`${config.API_ENDPOINT}/customlist`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => {
+        (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json().then(customList => {
+          const customExerciseId = customList.map(data => data.exercise_id)
+          this.setState({customList: customExerciseId})
+        })
+      })
+
   }
 
+
   handleChange = (e) => {
-    const selectedExercise = this.state.exercises.filter(data => data.exercise === e.target.id)
-    selectedExercise[0].isCheck = e.target.checked
+    const selectedExercise = this.state.filteredExercises.map(data => {
+      const num = parseInt(data.id)
+      const selectedNum = parseInt(e.target.id)
+      if(num === selectedNum) {
+        data.is_check = !data.is_check
+      }
+      return data
+    })
 
     this.setState({
-      ...this.state.exercises,
-      selectedExercise
+      filterExercises: selectedExercise
     })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const checkedExercise = this.state.exercises.filter(data => data.isCheck === true)
-    const exerciseList = checkedExercise.map(data => data.exercise)
+    const checkedExercise = this.state.filterExercises.filter(data => data.is_check === true)
+    const exerciseList = checkedExercise.map(data => data.id)
+    const newList = exerciseList.filter(val => !this.state.customList.includes(val))
+    
     this.setState({
-      customList: [...this.state.customList, ...exerciseList]
+      customList: [...this.state.customList, ...newList]
     })
 
-    this.updateDatabaseWithList(exerciseList)
+    const insertList = {
+      exercise_id: newList
+    }
+
+    fetch (`${config.API_ENDPOINT}/customlist`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(insertList)
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json().then(data => this.addedExerciseSuccess())
+    })
   }
 
-  updateDatabaseWithList = (exerciseList) => {
-    console.log(exerciseList) //post request to database
+  addedExerciseSuccess = () => {
+    const {history} = this.props
+    history.push('/CustomList')
   }
 
-  renderExcerciseList = (searchResult, selectExcercise) => {
-    return searchResult.map((data, index) => {
-      const exerciseName = Object.keys(data).join()
-      const newVal = this.state.exercises.find(data => data.exercise === exerciseName)
-      const combineName = exerciseName.replace(/\s/g, '')
+  renderExcerciseList = (selectExcercise) => {
+    return this.state.filteredExercises.map((data, index) => {
+      const newExerciseName = data.exercise_name.split('_').join(' ')
+
       return (
-        <>
-          <input type='checkbox' checked={newVal.isChecked} id={exerciseName} onChange={(e) => this.handleChange(e)}/>
-          <label onClick={() => selectExcercise(combineName, exerciseName, index, searchResult)}><Link to={`/${exerciseName}`}>{exerciseName}</Link></label>
-        </>
+        <div className='search-result-container'>
+          <input className='input-checkbox' type='checkbox' checked={data.is_check} id={data.id} onChange={(e) => this.handleChange(e)}/>
+          <label onClick={() => selectExcercise(newExerciseName, data.exercise_name, data.video, data.exercise_how_to)}><Link to={`/${data.exercise_name}`}><p className='muscle-group-exercise-name'>{newExerciseName}</p></Link></label>
+        </div>
       )
     })
   }
   
   render() {
-    const {filteredExercises, selectExcercise} = this.context
-    console.log(filteredExercises)
+    const {selectExcercise} = this.context
     return (
       <>
         <Header></Header>
         <Search></Search>
         <section>
-          <h1>Search Result</h1>
+          <h1 className='title-text'>Search Result</h1>
           <form className='muscle-group-exercises' onSubmit={(e) => this.handleSubmit(e)}>
-            {this.renderExcerciseList(filteredExercises, selectExcercise)}
-            <input type='submit'></input>
+            {this.renderExcerciseList(selectExcercise)}
+            <div className='submit-container'>
+              <button type='submit' className='search-submit'>Save</button>
+            </div>
           </form>
 
         </section>

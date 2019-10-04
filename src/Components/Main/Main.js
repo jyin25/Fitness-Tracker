@@ -14,25 +14,23 @@ function Main() {
     <>
       <Header></Header>
       <section className='background'>
-        <LoginPage></LoginPage>
-        <Register></Register>
       </section>
       <section className='nav-icons-container'>
         <nav className='icon-container'>
-          <Link to='/PreSet'><FaDumbbell className='icon'/></Link>
+          <Link to='/PreSet'><FaDumbbell className='icon preset-icon'/></Link>
           <p>Preset workout</p>
         </nav>
         <nav className='icon-container'>
-          <Link to='/Tracking'><FaRegListAlt className='icon'/></Link>
+          <Link to='/Tracking'><FaRegListAlt className='icon custom-icon'/></Link>
           <p>Custom tracking</p>
         </nav>
         <nav className='icon-container'>
-          <Link to='/progress'><FaRegChartBar className='icon'/></Link>
-          <p>Progress</p>
+          <Link to='/progress'><FaRegChartBar className='icon progress-icon'/></Link>
+          <p>Track progress</p>
         </nav>
 
       </section>
-    
+
 
 
     </>

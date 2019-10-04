@@ -1,4 +1,34 @@
-.nav-header {
-  border: 1px red solid;
-  margin: 0;
+.nav {
+  position: relative;
+}
+
+.nav-menu > p {
+  margin-bottom: .5rem;
+  margin-top: 1.2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: .5rem;
+  font-size: 23px;
+  color: white;
+}
+
+.nav-box {
+  position: absolute;
+  background-color: blue;
+  width: 5rem;
+}
+
+
+.nav-text {
+  z-index: 10;
+
+}
+
+#playListOpen { 
+  text-align: left; 
+  top:7px;
+  position: absolute;
+  font-size: 18px;
+  cursor:pointer;
+  z-index: 10;
 }

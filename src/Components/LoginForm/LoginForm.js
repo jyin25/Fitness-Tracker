@@ -1,13 +1,27 @@
 import React from 'react'
 import Header from '../Header/Header'
-import Login from '../Routes/LoginPage/LoginPage'
 import './LoginForm.css'
-import Register from '../Routes/Register/Register'
 import TokenService from '../../services/Token-service'
 import AuthApiService from '../../services/auth-api-service'
+import FitContext from '../FitContext/FitContext'
 
 class LoginForm extends React.Component {
   state = {error: null}
+
+  static contextType = FitContext;
+
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    },
+  }
+
+  onLoginSuccess = () => {
+    const {location, history} = this.props
+    const destination = (location.state || {}).from || '/'
+    history.push(destination)
+  }
 
   handleFormSubmit = (e) => {
     e.preventDefault()
@@ -18,9 +32,11 @@ class LoginForm extends React.Component {
       password: password.value,
     })
     .then(res => {
+      this.context.saveUserName(user_name.value)
       user_name.value =''
       password.value=''
       TokenService.saveAuthToken(res.authToken)
+      this.onLoginSuccess()
     })
     .catch(res => {
       this.setState({error: res.error})
@@ -33,19 +49,20 @@ class LoginForm extends React.Component {
       <> 
         <Header></Header>
           <section className='background'>
-          <Register></Register>            
           </section>
 
-        <form onSubmit={(e) => this.handleFormSubmit(e)}>
-          <label>
+        <form onSubmit={(e) => this.handleFormSubmit(e)} className='login-form'>
+          <label className='login-label'>
             Username
           </label>
-          <input required name='user_name' className='loginForm_user_name'/>
-          <label>
+          <input required name='user_name' className='loginForm-input'/>
+          <label className='login-label'>
             Password
           </label>
-          <input required type='password' name='password' className='loginForm_password'/>
-          <button type='submit'>Login</button>
+          <input required type='password' name='password' className='loginForm-input'/>
+          <div className='submit-container'>
+            <button className='login-submit' type='submit'>Login</button>
+          </div>
         </form>
       </>
     )

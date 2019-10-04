@@ -1,0 +1,14 @@
+.user-box {
+  position: absolute;
+  background-color: blue;
+  right: .01px;
+}
+
+.nav-user > p{
+  margin-bottom: .5rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 22px;
+  color: white;
+}

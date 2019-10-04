@@ -1,0 +1,51 @@
+.custom-list-container {
+  list-style-type:none;
+  margin-top: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  text-align: center;
+  width: 20rem;
+  background-color: #3A84E6;
+  border-radius: 8px;
+}
+
+.exercise-container > ul {
+  padding-left: 0;
+}
+
+.pr-input {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.custom-exercise-list {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+
+}
+
+.custom-exercise-list > h1 {
+  margin-bottom: 0;
+  color: white;
+  font-size: 2rem;
+}
+
+.custom-input-box {
+  height: 2rem;
+  margin-right: .5rem;
+  margin-left: .5rem;
+  margin-top: .5rem;
+  width: 3.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.custom-exercise-name {
+  padding-top: .5rem;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}

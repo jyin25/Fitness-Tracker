@@ -1,20 +1,41 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Nav.css'
 
-function Nav() {
-  return (
-    <div className='nav-header'>
-      <nav>
+class Nav extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      onClick: false
+    }
+  }
+
+  displayOptions = () => {
+    return(
+      <nav className='nav-box'>
         <Link to='/PreSet'><p className='nav-text'>Preset List</p></Link>
-        <Link to='/Self'><p className='nav-text'>Make your own</p></Link>
-        <Link to='/Progress'><p className='nav-text'>Advanced</p></Link>
+        <Link to='/Tracking'><p className='nav-text'>Custom List</p></Link>
+        <Link to='/Progress'><p className='nav-text'>Progress</p></Link>
       </nav>
-      <section>
-        
-      </section>
-    </div>
-  )
+    )
+  }
+
+  handleClick = () => {
+    this.setState({onClick: !this.state.onClick})
+  }
+
+  render() {
+
+    const clickEvent = this.state.onClick
+
+    return (
+      <div className='nav-menu'>
+        <p onClick={() => this.handleClick()}>☰</p>
+        {clickEvent? this.displayOptions(): null}
+      </div>
+    )
+  }
 }
 
 export default Nav;

@@ -1,3 +1,15 @@
-.tracking-text {
+.tracking-text > h1 {
   text-align: center;
+  color: white;
 }
+
+.custom-list-icon {
+  background-color: #0B7CC7;
+  color: white;
+}
+
+.set-custom-icon {
+  background-color: #0B7CC7;
+  color: white;
+}
+

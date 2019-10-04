@@ -2,17 +2,21 @@
   display: flex;
 }
 
-.pr-input {
+.pre-input {
+  margin-top: 1rem;
   display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 
 .input-box {
-  width: 2rem;
-  height: 1rem;
+  height: 1.7rem;
   margin-right: .5rem;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-left: .5rem;
+  margin-top: .5rem;
+  width: 3.5rem;
   border: 1px black solid;
+  margin-bottom: 1rem;
 }
 
 .exercise-container {
@@ -32,8 +36,10 @@
 }
 
 .submit-box {
-  width: 3rem;
+  width: 5rem;
   height: 1.2rem;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
+  height: 1.7rem;
+  border-radius: 8px;
+  font-size: 1.3rem;
 }
