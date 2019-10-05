@@ -30,8 +30,8 @@ class Nav extends React.Component {
     const clickEvent = this.state.onClick
 
     return (
-      <div className='nav-menu'>
-        <p onClick={() => this.handleClick()}>☰</p>
+      <div>
+        <p className='nav-menu' onClick={() => this.handleClick()}>☰</p>
         {clickEvent? this.displayOptions(): null}
       </div>
     )

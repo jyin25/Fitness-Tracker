@@ -6,8 +6,10 @@
 
 .search-button {
   height: 37px;
+  cursor: pointer;
 }
 
 .search-bar {
-  height: 30px
+  height: 30px;
+  font-size: 1.2rem;
 }

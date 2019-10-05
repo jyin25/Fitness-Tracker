@@ -1,14 +1,31 @@
 .user-box {
-  position: absolute;
-  background-color: blue;
+  background-color: white;
   right: .01px;
+  width: 80px;
+  position: absolute;
+  text-align: center;
 }
 
-.nav-user > p{
-  margin-bottom: .5rem;
+.nav-user-false {
+  margin-bottom: 1rem;
   margin-top: 1.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 22px;
   color: white;
+  position: relative;
+}
+
+.user-icon {
+  cursor: pointer;
+}
+
+.nav-user-true {
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 22px;
+  color: red;
+  position: relative;
 }

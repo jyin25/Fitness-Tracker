@@ -1,3 +1,7 @@
 .login-container {
   margin-right: .5rem;
 }
+
+.login {
+  font-family: 'Muli', sans-serif;
+}

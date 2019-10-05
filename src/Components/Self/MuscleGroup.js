@@ -37,14 +37,16 @@ class MuscleGroup extends React.Component {
     console.log(firstGroup)
 
     return firstGroup.map(data => {
-      return (
-        <>
-          <div>
-            <li className='muscle-text'>{data.muscle_name}</li>
-            <Link to={`/muscleGroup/${data.muscle_name}`}><img src={`a`} className='muscle-container' onClick={() => selectMuscleGroup(data)}/></Link>
-          </div>
-        </>
-      )
+      if(data.muscle_name !== 'rest') {
+        return (
+          <>
+            <div>
+              <li className='muscle-text'>{data.muscle_name}</li>
+              <Link to={`/muscleGroup/${data.muscle_name}`}><img src={data.muscle_pictures} className='muscle-container' onClick={() => selectMuscleGroup(data)}/></Link>
+            </div>
+          </>
+        )
+      }
     })
   }
 
@@ -52,12 +54,13 @@ class MuscleGroup extends React.Component {
     const secondGroup = this.state.muscleGroups.slice(5, this.state.muscleGroups.length);
 
     return secondGroup.map(data => {
+      console.log(data.muscle_pictures)
       if(data.muscle_name !== 'rest') {
         return (
           <>
             <div>
               <li className='muscle-text'>{data.muscle_name}</li>
-              <Link to={`/muscleGroup/${data.muscle_name}`}><img src={`a`} className='muscle-container' onClick={() => selectMuscleGroup(data)}/></Link>
+              <Link to={`/muscleGroup/${data.muscle_name}`}><img src={data.muscle_pictures} className='muscle-container' onClick={() => selectMuscleGroup(data)}/></Link>
             </div>
           </>
         )

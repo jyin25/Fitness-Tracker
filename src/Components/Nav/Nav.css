@@ -1,8 +1,4 @@
-.nav {
-  position: relative;
-}
-
-.nav-menu > p {
+.nav-menu {
   margin-bottom: .5rem;
   margin-top: 1.2rem;
   margin-left: 1rem;
@@ -10,25 +6,21 @@
   padding-bottom: .5rem;
   font-size: 23px;
   color: white;
+  cursor: pointer;
+
 }
 
 .nav-box {
   position: absolute;
-  background-color: blue;
+  background-color: white;
   width: 5rem;
+  transition: width 2s;
+  text-align: center;  
 }
 
 
 .nav-text {
   z-index: 10;
+  font-family: 'Muli', sans-serif;
 
-}
-
-#playListOpen { 
-  text-align: left; 
-  top:7px;
-  position: absolute;
-  font-size: 18px;
-  cursor:pointer;
-  z-index: 10;
 }

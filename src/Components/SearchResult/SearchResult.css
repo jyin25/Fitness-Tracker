@@ -20,6 +20,7 @@
 .search-submit {
   margin-top: 1rem;
   width: 6rem;
+  cursor: pointer;
 }
 
 .submit-container {

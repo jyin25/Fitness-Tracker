@@ -42,9 +42,9 @@ class Weeks extends React.Component {
 
   render() {
     const {weeks, selectedWeek} = this.context
-    
-    const firstSixWeeks = weeks.slice(0, 6)
-    const secondSixWeeks = weeks.slice(6, 12)
+
+    const secondSixWeeks = weeks.filter(data => data.week_number%2 === 0)
+    const firstSixWeeks = weeks.filter(data => data.week_number%2)
 
     return (
       <section className='weeks-container'>

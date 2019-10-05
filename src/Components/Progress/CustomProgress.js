@@ -4,6 +4,7 @@ import FitContext from '../FitContext/FitContext'
 import config from '../../config'
 import TokenService from '../../services/Token-service'
 import Header from '../Header/Header'
+import './CustomProgress.css'
 
 class CustomProgress extends React.Component {
   
@@ -103,10 +104,13 @@ class CustomProgress extends React.Component {
       <>
         <Header></Header>
         <section className='background'></section>
-        <select value={this.state.selection} onChange={(e) => this.selectOption(e)}>
-          <option></option>
-          {this.renderOptions()}
-        </select>
+        <div className='selection-container'>
+          <h1>Select an exercise to see your progress!</h1>
+          <select className='select-drop-down' value={this.state.selection} onChange={(e) => this.selectOption(e)}>
+            <option></option>
+            {this.renderOptions()}
+          </select>
+        </div>
 
         {this.state.selection? this.renderGraph(): null}
         

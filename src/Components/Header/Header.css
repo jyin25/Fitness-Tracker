@@ -1,9 +1,9 @@
-.heading-title {
+/* .heading-title {
   text-align: center;
   margin-bottom: .5rem;
   margin-top: 1rem;
   color: #77D6F3;
-}
+} */
 
 .login-register {
   display: flex;
@@ -13,4 +13,34 @@
   display: flex;
   justify-content: space-between;
   background-color: #273B49;
+}
+
+.heading-title {
+  text-align: center;
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  -webkit-animation:colorchange 5s infinite alternate;
+  font-family: 'Notable', sans-serif;
+}
+
+@keyframes colorchange {
+  0% {
+    color: #77D6F3;
+  }
+  20% {
+    color: #70D0EE
+  }
+  40% {
+    color: #54D684;
+  }
+  60% {
+    color: #2b6f8a;
+  }
+  80% {
+    color: #0B7CC7;
+  }
+  100% {
+    color: #AB07B1;
+  }
 }

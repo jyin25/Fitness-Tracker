@@ -46,8 +46,10 @@ class NavUsers extends React.Component {
     const clickEvent = this.state.onClick
 
     return (
-      <div className='nav-user'>
-        <p onClick={() => this.handleClick()}><FaUser className='user-icon'/></p>
+      <div>
+        {TokenService.hasAuthToken()
+          ? <p className='nav-user-true' onClick={() => this.handleClick()}><FaUser className='user-icon'/></p>
+          : <p className='nav-user-false' onClick={() => this.handleClick()}><FaUser className='user-icon'/></p>}
         {clickEvent? this.displayOptions(userName): null}
       </div>
     )

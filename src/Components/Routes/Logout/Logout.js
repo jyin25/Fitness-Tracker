@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import TokenService from '../../../services/Token-service'
+import './Logout.css'
 
 class Logout extends React.Component {
   handleLogoutClick = () => {
@@ -10,7 +11,7 @@ class Logout extends React.Component {
   render() {
     return (
       <>
-        <Link to='/'><p onClick={() => this.handleLogoutClick()}>Logout</p></Link>
+        <Link to='/'><p onClick={() => this.handleLogoutClick()} className='logout-text'>Logout</p></Link>
       </>
     )
   }
