@@ -13,7 +13,7 @@ class ProgressMain extends React.Component {
         <Header></Header>
         <section className='background'></section>
         <Link to='/CustomProgress'><p className='progress-title'>Custom List</p></Link>
-        <Link to='/PresetProgress'><p className='progress-title'>Preset Link</p></Link>
+        <Link to='/PresetProgress'><p className='progress-title'>Preset List</p></Link>
       </>
     )
   }

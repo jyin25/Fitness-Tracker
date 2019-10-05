@@ -90,10 +90,14 @@ class DisplayExercisesMuscle extends React.Component {
     .then(res => {
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
-        : res.json().then(data => console.log(data))
+        : res.json().then(data => this.addedExerciseSuccess())
     })
   }
 
+  addedExerciseSuccess = () => {
+    const {history} = this.props
+    history.push('/CustomList')
+  }
 
   renderSelectedMuscleGroup = (muscle, muscleData, selectExcercise) => {
 
