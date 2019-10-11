@@ -17,6 +17,7 @@ import CustomList from './Components/Self/CustomList/CustomList'
 import RegisterForm from './Components/RegisterForm/RegisterForm'
 import CustomProgress from './Components/Progress/CustomProgress'
 import PrivateRoute from './Components/Routes/PrivateRoute/PrivateRoute'
+import PresetProgress from './Components/Progress/ProgressPreset'
 
 class App extends React.Component {
   constructor(props) {
@@ -45,9 +46,7 @@ class App extends React.Component {
   }
 
   selectWeek = (data) => {
-    console.log(data)
     this.setState({selectedWeek: {id: data.id, value: data.week_number}})
-
   }
 
   selectDay = (data) => {
@@ -163,6 +162,9 @@ class App extends React.Component {
             <Route 
               exact path='/CustomProgress'
               component={CustomProgress}/>
+            <Route 
+              exact path='/PresetProgress'
+              component={PresetProgress}/>
           </Switch>
         </FitContext.Provider>
       </div>

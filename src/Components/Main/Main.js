@@ -1,13 +1,10 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Main.css'
 import {FaRegChartBar} from "react-icons/fa";
 import {FaDumbbell} from "react-icons/fa";
 import {FaRegListAlt} from "react-icons/fa";
-import {FaPowerOff} from "react-icons/fa";
-import LoginPage from '../Routes/LoginPage/LoginPage'
 import Header from '../Header/Header'
-import Register from '../Routes/Register/Register'
 
 function Main() {
   return (

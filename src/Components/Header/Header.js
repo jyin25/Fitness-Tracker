@@ -9,7 +9,6 @@ class Header extends React.Component {
   static contextType = FitContext;
 
   render() {
-    const userName = this.context.userName
 
     return (
       <> 

@@ -9,6 +9,13 @@ import './Exercise.css'
 class Exercies extends React.Component {
   static contextType = FitContext;
 
+  constructor(props) {
+    super(props)
+    this.state={
+      exercisesTracking:[]
+    }
+  }
+
   componentDidMount = () => {
     fetch (`${config.API_ENDPOINT}/weeks/${this.context.selectedWeek.id}/${this.context.selectedDay.id}`, {
       headers: {
@@ -18,7 +25,9 @@ class Exercies extends React.Component {
       .then(res => {
         (!res.ok)
         ? res.json().then(e => Promise.reject(e))
-        : res.json().then(exercisesTracking => this.context.setExercises(exercisesTracking))
+        : res.json().then(exercisesTracking => {
+          this.setState({exercisesTracking})
+          this.context.setExercises(exercisesTracking)})
       })
   }
 
@@ -36,7 +45,8 @@ class Exercies extends React.Component {
 
 
   render() {
-    const {preSetExercises} = this.context;
+    const preSetExercises = this.state.exercisesTracking
+    console.log(this.state.exercisesTracking)
     return (
       <>
         <Header></Header>

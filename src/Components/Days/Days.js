@@ -23,10 +23,10 @@ class Days extends React.Component {
   }
   
   renderDays (days) {
-    const render = days.map(data => {
+    const render = days.map((data, index) => {
       return (
-        <Link to={`/week${this.context.selectedWeek.value}/${data.day_name}`}>
-          <h3 className='day-container' onClick={() => this.context.selectDay(data)}>{data.day_name}</h3>
+        <Link key={index} to={`/week${this.context.selectedWeek.value}/${data.day_name}`}>
+          <h3 key={index} className='day-container' onClick={() => this.context.selectDay(data)}>{data.day_name}</h3>
         </Link>
       )
     })
@@ -36,7 +36,6 @@ class Days extends React.Component {
   
   render() {
     const {selectedWeek, days} = this.context
-    console.log(days)
     return (
       <>
         <Header></Header>
@@ -45,7 +44,7 @@ class Days extends React.Component {
         <header className='day-title-container'>
           <h1 className='title'>Days</h1>
         </header>}
-        <section className='days-container'>
+        <section className='days-container' key='days-container-1'>
           {this.renderDays(days)}
         </section>
       </>

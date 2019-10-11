@@ -1,6 +1,5 @@
 import React from 'react'
 import './SearchResult.css'
-import {FaSearch} from "react-icons/fa"
 import FitContext from '../FitContext/FitContext'
 import Search from '../Search/Search'
 import Header from '../Header/Header'

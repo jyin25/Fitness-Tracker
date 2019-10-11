@@ -1,6 +1,5 @@
 import React from 'react'
 import './ExcerciseList.css'
-import Nav from '../../Nav/Nav'
 import {Link} from 'react-router-dom'
 import FitContext from '../../FitContext/FitContext'
 import config from '../../../config'
@@ -14,11 +13,14 @@ class ExerciseList extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
-      id: this.props.exerciseObj.id,
-      maxValue: this.props.exerciseObj.max_value
+      id: '',
+      maxValue: ''
     }
+  }
+
+  componentDidMount = () => {
+    this.setState({id: this.props.exerciseObj.id, maxValue: this.props.exerciseObj.max_value})
   }
 
 
@@ -75,8 +77,7 @@ class ExerciseList extends React.Component {
 
 
   render() {
-    console.log(this.props)
-    const {exerciseObj} = this.props //object with muscle group name and nested array with exercises separated by each muscle group
+    const {exerciseObj} = this.props
     const {selectExcercise} = this.context
     return (
       <>

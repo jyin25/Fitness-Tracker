@@ -1,5 +1,3 @@
-import config from '../config'
-
 const AuthApiService = {
   postLogin(user_name, password) {
     return fetch(`http://localhost:8000/api/login`, {

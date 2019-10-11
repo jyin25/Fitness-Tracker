@@ -14,6 +14,7 @@ class CustomList extends React.Component {
     super(props)
     this.state = {
       customList: [],
+      isText: false,
     }
   }
 
@@ -34,6 +35,16 @@ class CustomList extends React.Component {
     let newVal = e.target.value
 
 
+    if(isNaN(parseInt(e.target.value))) {
+      console.log(isNaN(parseInt(newVal)))
+      this.setState({isText: true})
+    } else {
+      this.setState({isText: false})
+    }
+
+    console.log(this.state.isText)
+
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -49,6 +60,10 @@ class CustomList extends React.Component {
 
   handleInput2 = (e) => {
     let newVal = e.target.value
+
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -66,6 +81,10 @@ class CustomList extends React.Component {
   handleInput3 = (e) => {
     let newVal = e.target.value
 
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -81,6 +100,10 @@ class CustomList extends React.Component {
 
   handleInput4 = (e) => {
     let newVal = e.target.value
+
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -98,6 +121,10 @@ class CustomList extends React.Component {
   handleInput5 = (e) => {
     let newVal = e.target.value
 
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -113,6 +140,10 @@ class CustomList extends React.Component {
 
   handleInput6 = (e) => {
     let newVal = e.target.value
+
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -130,6 +161,10 @@ class CustomList extends React.Component {
   handleInput7 = (e) => {
     let newVal = e.target.value
 
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -145,6 +180,10 @@ class CustomList extends React.Component {
 
   handleInput8 = (e) => {
     let newVal = e.target.value
+
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -162,6 +201,10 @@ class CustomList extends React.Component {
   handleInput9 = (e) => {
     let newVal = e.target.value
 
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -177,6 +220,10 @@ class CustomList extends React.Component {
 
   handleInput10 = (e) => {
     let newVal = e.target.value
+
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -194,6 +241,10 @@ class CustomList extends React.Component {
   handleInput11 = (e) => {
     let newVal = e.target.value
 
+    if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
+
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
       const inputId = parseInt(e.target.id)
@@ -209,6 +260,10 @@ class CustomList extends React.Component {
 
   handleInput12 = (e) => {
     let newVal = e.target.value
+
+        if(isNaN(parseInt(e.target.value))) {
+      this.setState({isText: !this.state.isText})
+    }
 
     const findEx = this.state.customList.map(data => {
       const id = parseInt(data.id)
@@ -230,7 +285,6 @@ class CustomList extends React.Component {
       const id = parseInt(data.id)
       const formId = parseInt(e.target.id)
       if(id === formId) {
-        console.log(data.max_value_1)
         fetch (`${config.API_ENDPOINT}/customlist/insert_custom_weights`, {
           method: 'PATCH',
           headers: {
@@ -256,7 +310,7 @@ class CustomList extends React.Component {
           .then(res => {
             (!res.ok)
               ? res.json().then(e => Promise.reject(e))
-              : res.json()
+              : res.json().then(e => e)
           })
       }
     })
@@ -296,9 +350,15 @@ class CustomList extends React.Component {
     )
   }
 
+  alert = () => {
+    alert('Invalid number!')
+  }
+
   render() {
     console.log(this.state.customList)
     const {selectExcercise} = this.context
+    const warning = this.state.isText
+
 
     return (
       <>
@@ -307,8 +367,10 @@ class CustomList extends React.Component {
         <section className='custom-exercise-list'>
           <h1>Custom List</h1>
             <div className='exercise-container'>
-
-              <ul>{this.state.customList.map(exerciseObj => this.renderExerciseList(exerciseObj, selectExcercise))}</ul>
+              <ul>
+              {warning? <p className='invalid-number'>Invalid number!</p>:null}
+              {this.state.customList.map(exerciseObj => this.renderExerciseList(exerciseObj, selectExcercise))}
+              </ul>
             </div>
         </section>
       </>

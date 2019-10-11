@@ -1,5 +1,4 @@
 import React from 'react'
-import Nav from '../Nav/Nav'
 import {Link} from 'react-router-dom'
 import './MuscleGroup.css'
 import FitContext from '../FitContext/FitContext'
@@ -34,8 +33,6 @@ class MuscleGroup extends React.Component {
   displayFirstGroup = (selectMuscleGroup) => {
     const firstGroup = this.state.muscleGroups.slice(0, 5);
 
-    console.log(firstGroup)
-
     return firstGroup.map(data => {
       if(data.muscle_name !== 'rest') {
         return (
@@ -54,7 +51,6 @@ class MuscleGroup extends React.Component {
     const secondGroup = this.state.muscleGroups.slice(5, this.state.muscleGroups.length);
 
     return secondGroup.map(data => {
-      console.log(data.muscle_pictures)
       if(data.muscle_name !== 'rest') {
         return (
           <>

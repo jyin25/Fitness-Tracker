@@ -50,3 +50,7 @@
   margin-bottom: 1rem;
   font-family: 'Muli', sans-serif;
 }
+
+.invalid-number {
+  color: red;
+}

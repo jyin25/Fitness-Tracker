@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './Nav.css'
 import {FaUser} from "react-icons/fa";
 import Logout from '../Routes/Logout/Logout'

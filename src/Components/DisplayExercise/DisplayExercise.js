@@ -13,7 +13,7 @@ class DisplayExercise extends React.Component {
       <section className='display-exercise-info-container'>
         <h1>{newExerciseName}</h1>
         <div className='video'>
-          <iframe src={`${video}`}></iframe>
+          <iframe title={newExerciseName} src={`${video}`}></iframe>
         </div>
         <h2>Instructions</h2>
         <p className='how-to'>{howTo}</p>
