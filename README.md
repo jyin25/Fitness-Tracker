@@ -1,6 +1,6 @@
 # Fit Tracker
 
-![screenshots](second.png)
+![screenshots](Capture_iphonexspacegrey_portrait.png)
 
 ## About
 Fit Tracker is a tool that help users keep track of the weights they lift throughout 12 weeks. 
