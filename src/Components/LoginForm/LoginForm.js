@@ -45,12 +45,12 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    const error = this.state.error
     return (
       <> 
         <Header></Header>
-          <section className='background'>
-          </section>
-
+          <section className='background'></section>
+        {error? <p className='error-message'>{error}</p>: null}
         <form onSubmit={(e) => this.handleFormSubmit(e)} className='login-form'>
           <label className='login-label'>
             Username

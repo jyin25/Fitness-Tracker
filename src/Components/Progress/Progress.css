@@ -12,3 +12,39 @@
   font-size: 1.6rem;
   background-color: #925446;
 }
+
+
+
+@media only screen and (max-width: 1000px) and (min-width: 750px) {
+  .progress-title {
+    margin-bottom: 10rem;
+    margin-right: 10rem;
+    margin-left: 10rem;
+  }
+
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1000px) {
+  .progress-title {
+    margin-bottom: 10rem;
+    margin-right: 15rem;
+    margin-left: 15rem;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (min-width: 1500px) {
+  .progress-title {
+    margin-bottom: 10rem;
+    margin-right: 25rem;
+    margin-left: 25rem;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .progress-title {
+    margin-bottom: 10rem;
+    margin-right: 30rem;
+    margin-left: 30rem;
+  }
+
+}

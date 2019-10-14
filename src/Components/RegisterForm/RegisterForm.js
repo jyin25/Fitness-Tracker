@@ -5,7 +5,10 @@ import './RegisterForm.css'
 
 class RegisterForm extends React.Component {
 
-  state = {error: null}
+  state = {
+    error: null,
+    inputPw: '',
+  }
 
   static defaultProps = {
     history: {
@@ -37,17 +40,21 @@ class RegisterForm extends React.Component {
       this.setState({error: res.error})
     })
 
+  }
 
-    
+  password = (e) => {
+    this.setState({inputPw: e.target.value})
   }
 
   render() {
+    const inputPw = this.state.inputPw
+    const error = this.state.error
     return (
       <> 
         <Header></Header>
-          <section className='background'>
-          </section>
+          <section className='background'></section>
 
+        {error? <p className='error-message'>{error}</p>: null}
         <form onSubmit={(e) => this.handleRegisterSubmit(e)} className='register-form'>
           <label className='register-label'>
             Full name
@@ -60,7 +67,8 @@ class RegisterForm extends React.Component {
           <label className='register-label'>
             Password
           </label>
-          <input required type='password' name='password' className='register-input'/>
+          <input required type='password' name='password' className='register-input' onChange={(e) => this.password(e)}/>
+          {inputPw? <p className='pw-message'>Password must be longer than 8 characters and contain 1 upper case, lower case, number and special character</p>: null}
           <div className='submit-container'>
             <button type='submit'>Register</button>
           </div>

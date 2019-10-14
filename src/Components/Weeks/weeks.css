@@ -33,3 +33,51 @@
 
 
 
+  @media only screen and (max-width: 750px) and (min-width: 450px) {
+    .weeks-container {
+      margin-bottom: 5rem;
+    }
+
+    .week-container {
+      width: 12rem;
+    }
+  }
+  
+  @media only screen and (max-width: 1000px) and (min-width: 750px) {
+    .weeks-container {
+      margin-bottom: 5rem;
+    }
+
+    .week-container {
+      width: 15rem;
+    }
+  
+  }
+  
+  @media only screen and (max-width: 1500px) and (min-width: 1000px) {
+    .weeks-container {
+      margin-bottom: 5rem;
+    }
+    .week-container {
+      width: 15rem;
+    }
+  }
+  
+  @media only screen and (max-width: 2000px) and (min-width: 1500px) {
+    .weeks-container {
+      margin-bottom: 5rem;
+    }
+    .week-container {
+      width: 20rem;
+    }
+  }
+  
+  @media only screen and (min-width: 2000px) {
+    .weeks-container {
+      margin-bottom: 5rem;
+    }
+    .week-container {
+      width: 25rem;
+    }
+  
+  }
