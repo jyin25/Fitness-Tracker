@@ -9,6 +9,7 @@ Users have the option to set their own exercises to track or use the preselected
 
 ## Technologies Used:
 Front-end: React, HTML/CSS, Javascript
+
 Back-end: Node.js, Express, PostgreSQL
 
 ## Server side GIT repo:
