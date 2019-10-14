@@ -44,7 +44,7 @@ class Days extends React.Component {
         <header className='day-title-container'>
           <h1 className='title'>Days</h1>
         </header>}
-        <section className='days-container' key='days-container-1'>
+        <section className='days-container'>
           {this.renderDays(days)}
         </section>
       </>
