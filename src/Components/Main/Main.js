@@ -15,15 +15,15 @@ function Main() {
       <section className='nav-icons-container'>
         <nav className='icon-container'>
           <Link to='/PreSet'><FaDumbbell className='icon preset-icon'/></Link>
-          <p>Preset workout</p>
+          <p>Preset Workout</p>
         </nav>
         <nav className='icon-container'>
           <Link to='/Tracking'><FaRegListAlt className='icon custom-icon'/></Link>
-          <p>Custom tracking</p>
+          <p>Custom Tracking</p>
         </nav>
         <nav className='icon-container'>
           <Link to='/progress'><FaRegChartBar className='icon progress-icon'/></Link>
-          <p>Track progress</p>
+          <p>Track Progress</p>
         </nav>
 
       </section>

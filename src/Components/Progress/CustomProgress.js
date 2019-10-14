@@ -69,7 +69,7 @@ class CustomProgress extends React.Component {
 
       return (
         
-        <div style={{ display: 'flex', maxWidth: 800 }}>
+        <div className='graph-container' style={{ display: 'flex', maxWidth: 800 }}>
           <Chart
             width={400}
             height={400}

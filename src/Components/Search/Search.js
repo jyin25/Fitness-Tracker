@@ -20,7 +20,7 @@ class Search extends React.Component {
   }
 
   handleClick = (e, searchResult) => {
-    let filteredExercises = this.context.allExercises.filter(data => data.exercise_name.includes(this.state.searchTerm))
+    let filteredExercises = this.context.allExercises.filter(data => data.exercise_name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     searchResult(filteredExercises)
   }
 

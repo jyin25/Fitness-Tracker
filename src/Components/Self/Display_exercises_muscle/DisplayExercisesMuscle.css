@@ -27,3 +27,45 @@
   width: 16px;
   margin-right: .5rem;
 }
+
+@media only screen and (max-width: 750px) and (min-width: 450px) {
+  .muscle-exercise-container {
+    margin-right: 5rem;
+    margin-left: 5rem;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 750px) {
+  .muscle-exercise-container {
+    margin-right: 10rem;
+    margin-left: 10rem;
+    height: 4rem;
+  }
+
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1000px) {
+  .muscle-exercise-container {
+    margin-right: 15rem;
+    margin-left: 15rem;
+    height: 4rem;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (min-width: 1500px) {
+  .muscle-exercise-container {
+    margin-right: 25rem;
+    margin-left: 25rem;
+    height: 4.5rem;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .muscle-exercise-container {
+    margin-right: 35rem;
+    margin-left: 35rem;
+    height: 4.5rem;
+  }
+
+}
