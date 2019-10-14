@@ -84,7 +84,6 @@ class App extends React.Component {
   }
 
   saveUserName = (data) => {
-    console.log(data)
     this.setState({userName: data})
   }
 
