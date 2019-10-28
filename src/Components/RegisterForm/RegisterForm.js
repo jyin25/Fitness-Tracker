@@ -55,24 +55,26 @@ class RegisterForm extends React.Component {
           <section className='background'></section>
 
         {error? <p className='error-message'>{error}</p>: null}
-        <form onSubmit={(e) => this.handleRegisterSubmit(e)} className='register-form'>
-          <label className='register-label'>
-            Full name
-          </label>
-          <input required name='full_name' type='text' className='register-input'/>
-          <label className='register-label'>
-            User name
-          </label >
-          <input required type='text' name='user_name' className='register-input'/>
-          <label className='register-label'>
-            Password
-          </label>
-          <input required type='password' name='password' className='register-input' onChange={(e) => this.password(e)}/>
-          {inputPw? <p className='pw-message'>Password must be longer than 8 characters and contain 1 upper case, lower case, number and special character</p>: null}
-          <div className='submit-container'>
-            <button type='submit'>Register</button>
-          </div>
-        </form>
+        <div className='login-form-container'> 
+          <form onSubmit={(e) => this.handleRegisterSubmit(e)} className='register-form'>
+            <label className='register-label'>
+              Full name
+            </label>
+            <input required name='full_name' type='text' className='register-input'/>
+            <label className='register-label'>
+              User name
+            </label >
+            <input required type='text' name='user_name' className='register-input'/>
+            <label className='register-label'>
+              Password
+            </label>
+            <input required type='password' name='password' className='register-input' onChange={(e) => this.password(e)}/>
+            {inputPw? <p className='pw-message'>Password must be longer than 8 characters and contain 1 upper case, lower case, number and special character</p>: null}
+            <div className='submit-container'>
+              <button type='submit'>Register</button>
+            </div>
+          </form>
+        </div>
       </>
     )
   }

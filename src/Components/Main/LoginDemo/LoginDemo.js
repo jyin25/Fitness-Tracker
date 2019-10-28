@@ -1,11 +1,13 @@
 import React from 'react'
-import Header from '../Header/Header'
-import './LoginForm.css'
-import TokenService from '../../services/Token-service'
-import AuthApiService from '../../services/auth-api-service'
-import FitContext from '../FitContext/FitContext'
+import {Link} from 'react-router-dom'
+import TokenService from '../../../services/Token-service'
+import AuthApiService from '../../../services/auth-api-service'
+import FitContext from '../../FitContext/FitContext'
+import config from '../../../config'
+import './LoginDemo.css'
 
-class LoginForm extends React.Component {
+class LoginDemo extends React.Component {
+
   state = {error: null}
 
   static contextType = FitContext;
@@ -19,7 +21,7 @@ class LoginForm extends React.Component {
 
   onLoginSuccess = () => {
     const {location, history} = this.props
-    const destination = (location.state || {}).from || '/'
+    const destination = (location.state || {}).from || '/user'
     history.push(destination)
   }
 
@@ -32,7 +34,6 @@ class LoginForm extends React.Component {
       password: password.value,
     })
     .then(res => {
-      this.context.saveUserName(user_name.value)
       user_name.value =''
       password.value=''
       TokenService.saveAuthToken(res.authToken)
@@ -44,14 +45,18 @@ class LoginForm extends React.Component {
 
   }
 
+  clickDemo = () => {
+    TokenService.saveAuthToken(config.DEMO_TOKEN_KEY)
+    this.onLoginSuccess()
+  }
+
   render() {
     const error = this.state.error
     return (
-      <> 
-        <Header></Header>
-          <section className='background'></section>
+      <>
+        <h1 className='heading-title'>Fit Tracker</h1>
         {error? <p className='error-message'>{error}</p>: null}
-        <div className='login-form-container'> 
+        <div className='login-form-container'>
           <form onSubmit={(e) => this.handleFormSubmit(e)} className='login-form'>
             <label className='login-label'>
               Username
@@ -63,6 +68,8 @@ class LoginForm extends React.Component {
             <input required type='password' name='password' className='loginForm-input'/>
             <div className='submit-container'>
               <button className='login-submit' type='submit'>Login</button>
+              <button className='register-submit'><Link to='/RegisterForm'>Register</Link></button>
+              <button className='demo-submit' onClick={() => this.clickDemo()}>Demo</button>
             </div>
           </form>
         </div>
@@ -71,4 +78,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+export default LoginDemo;

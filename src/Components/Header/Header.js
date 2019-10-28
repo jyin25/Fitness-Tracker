@@ -14,7 +14,7 @@ class Header extends React.Component {
       <> 
         <div className='heading-container'>
           <Nav></Nav>
-          <Link to='/'><h1 className='heading-title'>Fit Tracker</h1></Link>
+          <Link to='/user'><h1 className='heading-title'>Fit Tracker</h1></Link>
           <NavUsers></NavUsers>
         </div>
       </>

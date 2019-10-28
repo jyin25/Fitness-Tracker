@@ -18,6 +18,7 @@ import RegisterForm from './Components/RegisterForm/RegisterForm'
 import CustomProgress from './Components/Progress/CustomProgress'
 import PrivateRoute from './Components/Routes/PrivateRoute/PrivateRoute'
 import PresetProgress from './Components/Progress/ProgressPreset'
+import loginDemo from './Components/Main/LoginDemo/LoginDemo'
 
 class App extends React.Component {
   constructor(props) {
@@ -117,51 +118,52 @@ class App extends React.Component {
       <div>
         <FitContext.Provider value={contextValue}>
           <Switch>
-            <Route
-              exact path='/'
+            <Route exact path='/' component={loginDemo}/>
+            <PrivateRoute
+              exact path='/user'
               component={Main}/>
             <PrivateRoute
               exact path='/PreSet'
               component={Preset}/>
-            <Route
+            <PrivateRoute
               exact path='/MuscleGroup'
               component={MuscleGroup}/>
             <PrivateRoute
               exact path='/Progress'
               component={Progress}/>
-            <Route
+            <PrivateRoute
               exact path={`/Preset/week${this.state.selectedWeek.value}`}
               component={Days}/>
             
-            <Route
+            <PrivateRoute
               exact path={`/week${this.state.selectedWeek.value}/${this.state.selectedDay.value}`}
               component={Exercise}/>
             
-            <Route 
+            <PrivateRoute 
               exact path={`/muscleGroup/${this.state.selectedGroup.muscle_name}`}
               component={DisplayExercisesMuscle}/>
-            <Route
+            <PrivateRoute
               exact path={`/${this.state.selectedExercise.name}`}
               component={DisplayExercise}/>
-            <Route 
+            <PrivateRoute 
               exact path='/Login'
               component={LoginForm}/>
             <PrivateRoute           
               exact path='/Tracking'
               component={Tracking}/>
-            <Route           
+            <PrivateRoute           
               exact path='/Search_result'
               component={SearchResult}/>
-            <Route 
+            <PrivateRoute 
               exact path='/Customlist'
               component={CustomList}/>
             <Route 
               exact path='/RegisterForm'
               component={RegisterForm}/>
-            <Route 
+            <PrivateRoute 
               exact path='/CustomProgress'
               component={CustomProgress}/>
-            <Route 
+            <PrivateRoute 
               exact path='/PresetProgress'
               component={PresetProgress}/>
           </Switch>
