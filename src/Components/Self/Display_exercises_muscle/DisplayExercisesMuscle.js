@@ -119,6 +119,8 @@ class DisplayExercisesMuscle extends React.Component {
         <Search></Search>
         <section>
           <h1 className='title-text'>{this.context.selectedGroup.muscle_name}</h1>
+          <p className='instructions'>Click on the exercise for more information</p>
+          <h3 className='description-howto'>Click on the checkbox to save exercises to your custom list</h3>
           <form className='muscle-group-exercises' onSubmit={(e) => this.handleSubmit(e)}>
             {this.renderSelectedMuscleGroup()}
             <div className='submit-container'>

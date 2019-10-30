@@ -14,8 +14,8 @@ class Nav extends React.Component {
   displayOptions = () => {
     return(
       <nav className='nav-box'>
-        <Link to='/PreSet'><p className='nav-text'>Preset List</p></Link>
-        <Link to='/Tracking'><p className='nav-text'>Custom List</p></Link>
+        <Link to='/PreSet'><p className='nav-text'>Preset</p></Link>
+        <Link to='/Tracking'><p className='nav-text'>Custom</p></Link>
         <Link to='/Progress'><p className='nav-text'>Progress</p></Link>
       </nav>
     )

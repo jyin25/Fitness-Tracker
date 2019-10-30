@@ -36,13 +36,11 @@ class CustomList extends React.Component {
 
 
     if(isNaN(parseInt(e.target.value))) {
-      console.log(isNaN(parseInt(newVal)))
       this.setState({isText: true})
     } else {
       this.setState({isText: false})
     }
 
-    console.log(this.state.isText)
 
 
     const findEx = this.state.customList.map(data => {
@@ -355,7 +353,6 @@ class CustomList extends React.Component {
   }
 
   render() {
-    console.log(this.state.customList)
     const {selectExcercise} = this.context
     const warning = this.state.isText
 
@@ -366,6 +363,8 @@ class CustomList extends React.Component {
         <Search></Search>
         <section className='custom-exercise-list'>
           <h1>Custom List</h1>
+          <p className="instructions">Click on the exercise for more information</p>
+          <h3 className='description-howto'>Record the heaviest weight you lifted for the week</h3>
             <div className='exercise-container'>
               <ul>
               {warning? <p className='invalid-number'>Invalid number!</p>:null}

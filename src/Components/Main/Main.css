@@ -12,9 +12,9 @@
 
 
 .background {
-  background-image: url('https://www.t-nation.com/system/publishing/articles/10005761/original/The-20-Minutes-of-Anything-Workout.jpg?1514667563');
+  background-image: url('https://media3.giphy.com/media/26FPzN52UBOMAoqgU/source.gif');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 50vw;
   height: 10rem;
   align-items: center;
   display: flex;
@@ -129,7 +129,11 @@ body {
   }
 
   .icon {
-    font-size: 3rem;
+    font-size: 4rem;
+  }
+
+  .icon-container > p {
+    font-size: 25px;
   }
 
 
@@ -137,15 +141,23 @@ body {
 
 @media only screen and (min-width: 2000px) {
   .background {
-    height: 35rem;
+    height: 40rem;
   }
 
   .icon {
-    font-size: 5rem;
+    font-size: 6rem;
   }
 
   .nav-icons-container {
     margin-bottom: 10rem;
+  }
+
+  .heading-title {
+    font-size: 4rem;
+  }
+
+  .icon-container > p {
+    font-size: 30px;
   }
 
 }
