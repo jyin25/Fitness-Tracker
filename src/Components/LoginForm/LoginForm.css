@@ -35,10 +35,21 @@
   margin-bottom: .3rem;
 }
 
-@media only screen and (max-width: 449px) and (min-width: 300px) {
+@media only screen and (max-width: 449px) and (min-width: 200px) {
   .login-form {
     padding-right: 1rem;
     padding-left: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    width: 10rem;
+  }
+
+  .heading-title {
+    font-size: 2rem;
+  }
+
+  .loginForm-input {
+    width: 9rem;
   }
 
 }

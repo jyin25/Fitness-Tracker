@@ -2,3 +2,10 @@
   display: flex;
   flex-direction: column;
 }
+
+@media only screen and (max-width: 449px) and (min-width: 200px) {
+  .submit-container > button {
+    width: 6.5rem;
+}
+
+}
