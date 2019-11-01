@@ -5,6 +5,7 @@ import AuthApiService from '../../../services/auth-api-service'
 import FitContext from '../../FitContext/FitContext'
 import config from '../../../config'
 import './LoginDemo.css'
+import logo from '../../../Images/icon.png'
 
 class LoginDemo extends React.Component {
 
@@ -54,7 +55,10 @@ class LoginDemo extends React.Component {
     const error = this.state.error
     return (
       <>
+      <div className='login-container'>
         <h1 className='heading-title'>Fit Tracker</h1>
+        <img className='login-logo' src={logo} alt='logo'></img>
+      </div>
         {error? <p className='error-message'>{error}</p>: null}
         <div className='login-form-container'>
           <form onSubmit={(e) => this.handleFormSubmit(e)} className='login-form'>

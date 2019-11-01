@@ -19,6 +19,7 @@ import CustomProgress from './Components/Progress/CustomProgress'
 import PrivateRoute from './Components/Routes/PrivateRoute/PrivateRoute'
 import PresetProgress from './Components/Progress/ProgressPreset'
 import loginDemo from './Components/Main/LoginDemo/LoginDemo'
+import GetStarted from './Components/Main/GetStarted/GetStarted'
 
 class App extends React.Component {
   constructor(props) {
@@ -118,7 +119,8 @@ class App extends React.Component {
       <div>
         <FitContext.Provider value={contextValue}>
           <Switch>
-            <Route exact path='/' component={loginDemo}/>
+            <Route exact path='/' component={GetStarted}/>
+            <Route exact path='/start' component={loginDemo}/>
             <PrivateRoute
               exact path='/user'
               component={Main}/>
