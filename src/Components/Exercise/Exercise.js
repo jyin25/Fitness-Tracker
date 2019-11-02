@@ -46,13 +46,12 @@ class Exercies extends React.Component {
 
   render() {
     const preSetExercises = this.state.exercisesTracking
-    console.log(this.state.exercisesTracking)
     return (
       <>
         <Header></Header>
         <section className='background'></section>
           <p className='instructions'>Click on the exercise for more information</p>
-          <p className='instructions'> Record your best lift per exercise to start tracking!</p>
+          <h3 className='description-howto'> Record the heaviest weight you lifted per exercise to start tracking!</h3>
         <section className='custom-exercise-list'>
           <div className='exercise-container'>
             <ul>{this.renderExercise(preSetExercises)}</ul>

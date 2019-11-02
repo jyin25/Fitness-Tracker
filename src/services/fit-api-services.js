@@ -3,7 +3,6 @@ import TokenService from './Token-service'
 
 const FitApiServices = {
   getWeeks() {
-    console.log(TokenService.getAuthToken())
     return fetch(`${config.API_ENDPOINT}/weeks`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`

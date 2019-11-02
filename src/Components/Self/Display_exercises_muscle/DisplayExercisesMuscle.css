@@ -22,6 +22,11 @@
   font-family: 'Muli', sans-serif;
 }
 
+.description-howto {
+  color: #c18b10;
+  text-align: center;
+}
+
 .input-checkbox {
   height: 16px;
   width: 16px;

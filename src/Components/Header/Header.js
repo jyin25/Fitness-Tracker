@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Nav from '../Nav/Nav'
 import FitContext from '../FitContext/FitContext'
 import NavUsers from '../Nav/NavUsers'
+import logo from '../../Images/icon.png'
 
 class Header extends React.Component {
   static contextType = FitContext;
@@ -14,7 +15,9 @@ class Header extends React.Component {
       <> 
         <div className='heading-container'>
           <Nav></Nav>
-          <Link to='/'><h1 className='heading-title'>Fit Tracker</h1></Link>
+          <Link className='logo-container' to='/user'>
+            <img className='title-logo' src={logo} alt='logo'></img>
+          </Link>
           <NavUsers></NavUsers>
         </div>
       </>

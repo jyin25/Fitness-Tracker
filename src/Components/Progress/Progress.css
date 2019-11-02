@@ -2,7 +2,6 @@
   color: white;
   text-align: center;
   margin-top: 5rem;
-  border: 1px black solid;
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -11,6 +10,8 @@
   margin-left: 1rem;
   font-size: 1.6rem;
   background-color: #925446;
+  border-radius: 5px;
+  font-family: 'Muli', sans-serif;
 }
 
 

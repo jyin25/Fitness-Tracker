@@ -54,6 +54,7 @@ class PresetProgress extends React.Component {
     })
 
     const ids = selectedExercise.map(data => data.id)
+    const exerciseName = selectedExercise.map(data => data.exercise_name)
     
     const a = ids.sort((a,b) => a-b)
     const sort1 = a[0]
@@ -96,18 +97,20 @@ class PresetProgress extends React.Component {
     const value11 = parseInt(val11[0].max_value)
     const value12 = parseInt(val12[0].max_value)
 
+    const newExerciseName = exerciseName[0].split('_').join(' ')
+
 
       return (
         
-        <div style={{ display: 'flex', maxWidth: 800 }}>
+        <div className='graph-container' style={{ display: 'flex', justifyContent: 'center', }}>
           <Chart
-            width={400}
-            height={400}
+            width="100%"
+            height={600}
             chartType="ColumnChart"
             loader={<div>Loading Chart</div>}
             data={[
               ['Workout', 'week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'week11', 'week12'],
-              ['newExerciseName', value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12],
+              [newExerciseName, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12],
             ]}
             options={{
               title: 'Gains',
@@ -129,8 +132,6 @@ class PresetProgress extends React.Component {
 
 
   render() {
-    console.log(this.state.preSetList)
-
     return (
       <>
         <Header></Header>

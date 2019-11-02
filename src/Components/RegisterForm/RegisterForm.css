@@ -37,11 +37,18 @@
   font-size: 1rem;
 }
 
+@media only screen and (max-width: 449px) and (min-width: 300px) {
+  .register-form {
+    margin-bottom: 3rem;
+    width: 250px;
+  }
+
+}
+
 @media only screen and (max-width: 750px) and (min-width: 450px) {
   .login-form {
     margin-bottom: 3rem;
-    margin-right: 5rem;
-    margin-left: 5rem;
+    width: 350px;
   }
 
 }
@@ -49,8 +56,7 @@
 @media only screen and (max-width: 1000px) and (min-width: 750px) {
   .register-form {
     margin-bottom: 5rem;
-    margin-right: 10rem;
-    margin-left: 10rem;
+    width: 400px;
   }
 
 }
@@ -58,24 +64,21 @@
 @media only screen and (max-width: 1500px) and (min-width: 1000px) {
   .register-form {
     margin-bottom: 5rem;
-    margin-right: 15rem;
-    margin-left: 15rem;
+    width: 400px;
   }
 }
 
 @media only screen and (max-width: 2000px) and (min-width: 1500px) {
   .register-form {
     margin-bottom: 10rem;
-    margin-right: 25rem;
-    margin-left: 25rem;
+    width: 400px;
   }
 }
 
 @media only screen and (min-width: 2000px) {
   .register-form {
     margin-bottom: 10rem;
-    margin-right: 30rem;
-    margin-left: 30rem;
+    width: 400px;
   }
 
 }

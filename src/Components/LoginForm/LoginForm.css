@@ -1,14 +1,20 @@
-
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .login-form {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   margin-right: 1rem;
   margin-left: 1rem;
   background-color: #44a1bd;
   border-radius: 8px;
+  align-items: center;
 }
 
 .loginForm-input {
@@ -29,11 +35,29 @@
   margin-bottom: .3rem;
 }
 
+@media only screen and (max-width: 449px) and (min-width: 200px) {
+  .login-form {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    width: 15rem;
+  }
+
+  .heading-title {
+    font-size: 2rem;
+  }
+
+  .loginForm-input {
+    width: 9rem;
+  }
+
+}
+
 @media only screen and (max-width: 750px) and (min-width: 450px) {
   .login-form {
     margin-bottom: 3rem;
-    margin-right: 5rem;
-    margin-left: 5rem;
+    width: 400px;
   }
 
 }
@@ -41,8 +65,7 @@
 @media only screen and (max-width: 1000px) and (min-width: 750px) {
   .login-form {
     margin-bottom: 5rem;
-    margin-right: 10rem;
-    margin-left: 10rem;
+    width: 400px;
   }
 
 }
@@ -50,24 +73,29 @@
 @media only screen and (max-width: 1500px) and (min-width: 1000px) {
   .login-form {
     margin-bottom: 5rem;
-    margin-right: 15rem;
-    margin-left: 15rem;
+    width: 400px;
   }
 }
 
 @media only screen and (max-width: 2000px) and (min-width: 1500px) {
   .login-form {
     margin-bottom: 10rem;
-    margin-right: 25rem;
-    margin-left: 25rem;
+    width: 400px;
   }
 }
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: 2000px) and (max-width: 2500px) {
   .login-form {
     margin-bottom: 10rem;
-    margin-right: 30rem;
-    margin-left: 30rem;
+    width: 400px;
+  }
+
+}
+
+@media only screen and (min-width: 2501px) {
+  .login-form {
+    margin-bottom: 10rem;
+    width: 500px;
   }
 
 }

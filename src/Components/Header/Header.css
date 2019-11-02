@@ -8,6 +8,18 @@
   background-color: #273B49;
 }
 
+.title-logo {
+  height: 8rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .heading-title {
   text-align: center;
   margin-bottom: .5rem;
@@ -39,9 +51,14 @@
   }
 }
 
-@media only screen and (max-width: 750px) and (min-width: 350px) {
+@media only screen and (max-width: 750px) and (min-width: 0px) {
   .heading-title {
     font-size: 2rem;
+  }
+  .title-logo {
+    height: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -51,11 +68,23 @@
     font-size: 2.5rem;
   }
 
+  .title-logo {
+    height: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
 }
 
 @media only screen and (max-width: 1500px) and (min-width: 1000px) {
   .heading-title {
     font-size: 2.5rem;
+  }
+
+  .title-logo {
+    height: 7rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -63,11 +92,23 @@
   .heading-title {
     font-size: 3rem;
   }
+
+  .title-logo {
+    height: 7rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @media only screen and (min-width: 2000px) {
   .heading-title {
     font-size: 3rem;
+  }
+
+  .title-logo {
+    height: 8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
 }
