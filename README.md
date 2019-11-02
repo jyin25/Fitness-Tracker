@@ -15,3 +15,5 @@ Back-end: Node.js, Express, PostgreSQL
 ## Server side GIT repo:
 https://github.com/jyin25/Fitness-tracker-databse
 
+## Live app:
+https://fitness-tracker.jyin25.now.sh/
