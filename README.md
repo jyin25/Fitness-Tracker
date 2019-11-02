@@ -1,6 +1,6 @@
 # Fit Tracker
 
-![screenshots](/Images/mockup.PNG)
+![screenshots](mockup.PNG)
 
 ## About
 Fit Tracker is a tool that help users keep track of the weights they lift throughout 12 weeks. 
