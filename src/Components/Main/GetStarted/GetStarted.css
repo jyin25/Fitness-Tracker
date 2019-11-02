@@ -35,12 +35,15 @@
 .get-started-box > p {
   color: white;
   font-family: 'Muli', sans-serif;
+  text-align: center;
 }
 
 .get-start {
   border-radius: 25px;
   width: 10rem;
   font-family: 'Muli', sans-serif;
+  margin-bottom: 5rem;
+  font-size: 1.3rem;
 }
 
 .get-start-heading-container {
@@ -51,4 +54,78 @@
   background-color: white;
   width: 100%;
   padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 550px) and (min-width: 200px) {
+  .get-started-box > p {
+    font-size: 1rem;
+  }
+
+  .get-start {
+    font-size: 1rem;
+  }
+
+  .get-started-box {
+    width: 15rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .get-started-box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 750px) and (min-width: 550px) {
+  .get-started-box > p {
+    font-size: 1.5rem;
+  }
+
+  .get-started-box {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .get-started-box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 750px) {
+  .get-started-box > p {
+    font-size: 1.5rem;
+  }
+
+  .get-started-box {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .get-started-box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1100px) {
+  .get-started-box > p {
+    font-size: 1.5rem;
+  }
+  
+}
+
+@media only screen and (max-width: 2000px) and (min-width: 1500px) {
+  .get-started-box > p {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .get-started-box > p {
+    font-size: 1.5rem;
+  }
+
 }
