@@ -13,3 +13,7 @@
   color: white;
 }
 
+.icon-container > .display-instruction {
+  height: 35px;
+  line-height: 1;
+}
