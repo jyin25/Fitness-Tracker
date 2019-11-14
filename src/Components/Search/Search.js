@@ -11,7 +11,6 @@ class Search extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
-      allExercises: [],
     }
   }
 
@@ -25,6 +24,8 @@ class Search extends React.Component {
   }
 
   render() {
+    console.log(this.context.allExercises)
+
     const {searchResult} = this.context
     return (
       <> 
