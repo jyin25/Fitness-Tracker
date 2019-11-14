@@ -40,11 +40,11 @@ class Tracking extends React.Component {
           <div className='nav-icons-container'>
             <nav className='icon-container'>
               <Link to='/CustomList'><FaTasks className='icon custom-list-icon'/></Link>
-              <p>Display custom workouts</p>
+              <p className='display-instruction'>Display custom workouts</p>
             </nav>
             <nav className='icon-container'>
               <Link to='/MuscleGroup'><FaDumbbell className='icon set-custom-icon'/></Link>
-              <p>Set custom workouts</p>
+              <p className='display-instruction'>Set custom workouts</p>
             </nav>
           </div>
         </section>
