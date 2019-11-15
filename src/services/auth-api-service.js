@@ -1,6 +1,6 @@
 const AuthApiService = {
   postLogin(user_name, password) {
-    return fetch(`https://fit-database.herokuapp.com/api/login`, {
+    return fetch(`https://nameless-spire-02434.herokuapp.com/api/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -14,7 +14,7 @@ const AuthApiService = {
       )
   },
   postUser(full_name, user_name, password) {
-    return fetch('https://fit-database.herokuapp.com/api/users', {
+    return fetch('https://nameless-spire-02434.herokuapp.com/api/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
