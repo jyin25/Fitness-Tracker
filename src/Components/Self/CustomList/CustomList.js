@@ -25,7 +25,7 @@ class CustomList extends React.Component {
       },
     })
       .then(res => {
-        (!res.ok)
+        (!res.ok) 
         ? res.json().then(e => Promise.reject(e))
         : res.json().then(customList => this.setState({customList}))
       })
@@ -315,6 +315,23 @@ class CustomList extends React.Component {
 
   }
 
+  handleDelete = (e) => {
+    this.state.customList.map(data => {
+      const id = parseInt(data.id)
+      const formId = parseInt(e.target.id)
+      console.log(id, formId)
+      if(id === formId) {
+        fetch (`${config.API_ENDPOINT}/customlist/delete_workout`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `bearer ${TokenService.getAuthToken()}`,
+          }
+        })
+          .then(res => res)
+      }
+    })
+  }
+
 
 
 
@@ -322,6 +339,7 @@ class CustomList extends React.Component {
   renderExerciseList = (exerciseObj, selectExcercise) => {
     const {exercise_name, video, exercise_how_to, id} = exerciseObj
     const newExerciseName = exercise_name.split('_').join(' ')
+    console.log(this.context.allExercises)
 
     return (
       <>
@@ -341,7 +359,7 @@ class CustomList extends React.Component {
             {exerciseObj.max_value_10? <input className='custom-input-box' value={exerciseObj.max_value_11} type='text' onChange={(e) => this.handleInput11(e)} id={id}></input>: null}
             {exerciseObj.max_value_11? <input className='custom-input-box' value={exerciseObj.max_value_12} type='text' onChange={(e) => this.handleInput12(e)} id={id}></input>: null}
           </div>
-          <button className='submit-box' type='submit'>Save</button>
+          <button className='submit-box' type='submit'>Save</button> <button className='submit-box' id={id} onClick={(e) => this.handleDelete(e)}>Delete</button>
         </form>
         </li>
       </>
