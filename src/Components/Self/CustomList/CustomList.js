@@ -319,7 +319,6 @@ class CustomList extends React.Component {
     this.state.customList.map(data => {
       const id = parseInt(data.id)
       const formId = parseInt(e.target.id)
-      console.log(id, formId)
       if(id === formId) {
         fetch (`${config.API_ENDPOINT}/customlist/delete_workout`, {
           method: 'DELETE',
@@ -339,7 +338,6 @@ class CustomList extends React.Component {
   renderExerciseList = (exerciseObj, selectExcercise) => {
     const {exercise_name, video, exercise_how_to, id} = exerciseObj
     const newExerciseName = exercise_name.split('_').join(' ')
-    console.log(this.context.allExercises)
 
     return (
       <>
